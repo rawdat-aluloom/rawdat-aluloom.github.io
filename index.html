@@ -759,7 +759,7 @@ function ar(n){return String(n).replace(/\d/g,function(d){return"\u0660\u0661\u0
 var HD='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 8px"><h2 style="font-size:20px;margin:0">أسماء الشهادات</h2><button type="button" id="shrf" style="border:2px solid #268CB5;background:#fff;color:#25246F;border-radius:99px;padding:6px 16px;font:700 15px Cairo,sans-serif;cursor:pointer">🔄 تحديث</button></div>';
 box.addEventListener("click",function(e){if(e.target&&e.target.id=="shrf"){loaded=0;load()}});
 function load(){if(loaded)return;var k=window.__admk||"";if(!k)return;loaded=1;box.style.display="block";box.innerHTML=HD+'<p class="nt">جارٍ التحميل...</p>';
-new Promise(function(res,rej){var cb="__shcb"+Date.now(),sc=document.createElement("script"),tm=setTimeout(function(){cl();rej()},12000);function cl(){clearTimeout(tm);try{delete window[cb]}catch(e){window[cb]=void 0}sc.remove()}
+new Promise(function(res,rej){var cb="__shcb"+Date.now(),sc=document.createElement("script"),tm=setTimeout(function(){cl();rej()},25000);function cl(){clearTimeout(tm);try{delete window[cb]}catch(e){window[cb]=void 0}sc.remove()}
 window[cb]=function(d){cl();res(d)};sc.onerror=function(){cl();rej()};sc.src=SHEET_URL+"?k="+encodeURIComponent(k)+"&callback="+cb+"&t="+Date.now();document.head.appendChild(sc)}).then(function(j){
 if(!j||!j.ok){box.innerHTML=HD+'<p class="nt">تعذّر تحميل الأسماء. تأكد من إعداد التطبيق.</p>';return}
 var rows=j.rows||[],m=0,f=0;rows.forEach(function(r){if(r[1]=="طالبة")f++;else m++});
