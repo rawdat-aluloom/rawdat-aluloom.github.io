@@ -885,6 +885,7 @@ try{fetch(U,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;ch
 try{if(!sessionStorage.getItem("sv_visit")){sessionStorage.setItem("sv_visit","1");sev("visit",0)}}catch(e){sev("visit",0)}
 var g=document.getElementById("grid");if(g)g.addEventListener("click",function(){sev("start",1)},true);
 var c=document.getElementById("cnt");if(c)new MutationObserver(function(){if(/8\s*من\s*8/.test(c.textContent))sev("finish",1)}).observe(c,{childList:true,characterData:true,subtree:true});
-document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#pr,#pr2,#pra");if(!t)return;var n=document.getElementById("cn");if(n&&n.textContent.trim())sev("save",0)},true);
+setTimeout(function(){var c2=document.getElementById("cnt");if(c2&&/8\s*من\s*8/.test(c2.textContent))sev("finish",1)},2500);
+document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#pr,#pr2,#pra");if(!t)return;var n=document.getElementById("cn");if(n&&n.textContent.trim()){sev("start",1);sev("finish",1);sev("save",0)}},true);
 })();</script>
 </body></html>
