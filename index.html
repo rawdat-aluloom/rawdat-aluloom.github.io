@@ -963,7 +963,7 @@ if(ct){if(ctVis())lss("rs_fin");new MutationObserver(function(){if(ctVis()&&!lsg
 // preload poses when idle, then start blink loop
 function preload(){Object.keys(SP).forEach(function(k){layer(k)});}
 (window.requestIdleCallback||function(f){setTimeout(f,1200)})(preload);
-function updAv(){M.style.visibility=ovOpen()?"hidden":"visible"}
+function updAv(){var o=ovOpen();M.style.visibility=o?"hidden":"visible";W.style.visibility=o?"hidden":"visible";if(o&&vis){hide()}}
 ["ov","cm","gm"].forEach(function(i){var e=document.getElementById(i);if(e)new MutationObserver(updAv).observe(e,{attributes:true,attributeFilter:["class"]})});
 blink();
 window.Rashid={show:show,hide:hide,fx:fx};
