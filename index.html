@@ -837,7 +837,8 @@ function wait1(cb,t){t=t||0;if(CB||t>80){cb();return}setTimeout(function(){wait1
 function post(n,g){try{fetch(URL_S,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({n:n,g:g=="f"?"f":"m"})}).catch(function(){})}catch(e){}}
 function r1(){CB=null;$("pv2").style.display="none";var im=$("cim"),st=$("cst");im.removeAttribute("src");st.textContent="جارٍ تجهيز الشهادة...";
 draw(SV.n,SV.d,G).then(function(b){CB=b;show(im,st,b,r1)})}
-function r2(){if(!X.c2)return;var c=X.c2,im=$("cim2"),st=$("cst2");B2=null;im.removeAttribute("src");st.textContent="جارٍ تجهيز الشهادة...";cur2=c.n+"|"+c.g;
+function gk(){try{return localStorage.getItem("c1p_gold")==="1"?"G":"N"}catch(e){return"N"}}
+function r2(){if(!X.c2)return;var c=X.c2,im=$("cim2"),st=$("cst2");B2=null;im.removeAttribute("src");st.textContent="جارٍ تجهيز الشهادة...";cur2=c.n+"|"+c.g+"|"+gk();
 draw(c.n,c.d,c.g).then(function(b){B2=b;show(im,st,b,r2)})}
 $("xok").onclick=function(){var n=stage?pend:$("xn").value.trim();if(!n){err("الاسم مطلوب أولًا");return}
 if((mode=="rn1"||mode=="rn2")&&!stage){pend=n;stage=1;err();$("xt").textContent="هل أنت متأكد من الاسم؟";$("xc").textContent=n;$("xc").style.display="block";$("xn").style.display="none";$("xok").textContent="نعم";$("xno").textContent="تعديل";return}
@@ -852,7 +853,7 @@ rn1.style.display="";rn1.classList.toggle("dn",!!X.rn1);rn1.textContent=two?"✏
 rn2.style.display=two?"":"none";rn2.classList.toggle("dn",!!(two&&X.c2.rn));add.style.display=two?"none":"";p2.style.display=two?"":"none";pa.style.display=two?"":"none";sp.style.display=two?"block":"none";
 if(!pr.disabled)pr.textContent=two?"💾 حفظ الأولى":"💾 حفظ الشهادة كصورة"}
 function sync(){if(cw.style.display=="none"||!cm.classList.contains("on")||!SV)return;ui();
-if(X.c2&&cur2!=X.c2.n+"|"+X.c2.g)wait1(r2)}
+if(X.c2&&cur2!=X.c2.n+"|"+X.c2.g+"|"+gk())wait1(r2)}
 new MutationObserver(sync).observe(cw,{attributes:true,attributeFilter:["style"]});
 new MutationObserver(sync).observe(cm,{attributes:true,attributeFilter:["class"]});
 p2.onclick=async function(){var b=this,t=b.textContent;b.disabled=true;b.textContent="جارٍ التجهيز...";
