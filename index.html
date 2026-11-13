@@ -1102,4 +1102,9 @@ sync();setTimeout(sync,800);
 <script>(function(){var w=document.getElementById("c1w");function cl(){w.classList.remove("on")}document.getElementById("c1wx").onclick=cl;w.onclick=function(e){if(e.target===w)cl()};
 document.addEventListener("keydown",function(e){if(e.key==="Escape")cl()});
 document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#mn2");if(!t)return;e.preventDefault();var x=document.getElementById("mnx");if(x)x.click();w.classList.add("on")},true)})();</script>
+<script id="c1sv">(function(){var K="c1seen",g=document.getElementById("grid");if(!g||typeof seen==="undefined")return;
+function save(){try{localStorage.setItem(K,JSON.stringify(Object.keys(seen)))}catch(e){}}
+try{var a=JSON.parse(localStorage.getItem(K)||"[]");a.forEach(function(k){k=+k;if(k>=0&&k<8&&!seen[k]){seen[k]=1;g.children[k].classList.add("seen")}});
+var n=Object.keys(seen).length;if(n){document.getElementById("cnt").textContent="الأقسام المكتشفة: "+n+" من 8"+(n==8?" 🎉":"");document.getElementById("pb").style.width=n*12.5+"%";if(n==8&&!done)pend=1;if(typeof reqUI==="function")reqUI()}}catch(e){}
+new MutationObserver(save).observe(g,{subtree:true,attributes:true,attributeFilter:["class"]})})();</script>
 </body></html>
