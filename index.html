@@ -288,7 +288,7 @@ if(!G){var cv=document.querySelector("#intro .cv"),ob=document.getElementById("o
 var mb=document.createElement("button");mb.id="mnb";mb.type="button";mb.setAttribute("aria-label","فتح القائمة");mb.setAttribute("aria-expanded","false");mb.innerHTML="<i></i><i></i><i></i>";
 var bd=document.createElement("div");bd.id="mnbd";
 var dr=document.createElement("nav");dr.id="mnd";dr.setAttribute("aria-label","القائمة");
-dr.innerHTML='<div class="mh"><b>القائمة</b><button type="button" id="mnx" aria-label="إغلاق القائمة">✕</button></div><button type="button" class="mi" id="mng"><span class="ic"></span><span><b>تغيير الصيغة</b><small id="mngs"></small></span></button>';
+dr.innerHTML='<div class="mh"><b>القائمة</b><button type="button" id="mnx" aria-label="إغلاق القائمة">✕</button></div><button type="button" class="mi" id="mng"><span class="ic"></span><span><b>تغيير الصيغة</b><small id="mngs"></small></span></button><button type="button" class="mi" id="mn2"><span class="ic">⭐</span><span><b>العدد الثاني: الصدق</b><small>قيد الإنشاء</small></span></button>';
 document.body.appendChild(bd);document.body.appendChild(dr);document.body.appendChild(mb);if(!G){mb.style.display="none"}
 document.getElementById("mngs").textContent=G=="f"?"الحالية: طالبة":G=="m"?"الحالية: طالب":"اختر: طالب أو طالبة";
 document.querySelector("#mng .ic").textContent=G=="f"?"👧":"👦";
@@ -364,7 +364,7 @@ var d;try{d=new Date().toLocaleDateString("ar-SA",{day:"numeric",month:"long",ye
 function fill(n,d){$("cn").textContent=n;$("cd").textContent=d;$("cin").style.display="none";$("cw").style.display="block";prep()}
 $("clg").src=document.querySelector(".logo img").src;$("ct").onclick=showCert;if(SV)$("ct").style.display="inline-block";$("mk").onclick=mkCert;$("nm").onkeydown=function(e){if(e.key=="Enter")mkCert()};
 function drawCert(){return new Promise(function(res){var W=1600,H=1130,c=document.createElement("canvas");c.width=W;c.height=H;var x=c.getContext("2d");x.direction="rtl";x.textAlign="center";x.textBaseline="middle";var F="Cairo,Tahoma,sans-serif";
-x.fillStyle="#fff";x.fillRect(0,0,W,H);x.strokeStyle="#25246F";x.lineWidth=26;x.strokeRect(13,13,W-26,H-26);x.strokeStyle="#A9C84D";x.lineWidth=5;x.strokeRect(40,40,W-80,H-80);
+x.fillStyle="#fff";x.fillRect(0,0,W,H);var GD=false;try{GD=localStorage.getItem("c1p_gold")==="1"}catch(e){}x.strokeStyle=GD?"#D99A00":"#25246F";x.lineWidth=26;x.strokeRect(13,13,W-26,H-26);x.strokeStyle=GD?"#F7C531":"#A9C84D";x.lineWidth=5;x.strokeRect(40,40,W-80,H-80);
 function T(t,y,sz,col,w,px){x.font=(w||600)+" "+sz+"px "+F;x.fillStyle=col;x.fillText(t,px||W/2,y)}
 var im=new Image();im.onload=function(){x.save();x.beginPath();x.arc(W/2,185,100,0,7);x.fillStyle="#A9C84D";x.fill();x.beginPath();x.arc(W/2,185,95,0,7);x.clip();x.drawImage(im,W/2-95,90,190,190);x.restore();
 T("مجلة الإرشاد الطلابي · العدد ١ · ١٤٤٨ هـ",330,28,"#087B59",700);T("شهادة تقدير",420,100,"#25246F",800);
@@ -444,7 +444,7 @@ document.addEventListener("keydown",function(e){if(!$("bkv")||!$("ov").classList
 var gReq=false,gFin=false,gTm=0,gI=[],gE=[],gRun=false,gSc=0,gLv=3,gT=20,gRaf=0,gLast=0,gSp=0,gShake=0,GW=360,GH=480,GK=["شكرًا","لطف","تعاون","احترام","ابتسامة","صدق","محبة","ما أروعك","تسامح","أمل","وفاء","مساعدة"],GB=["تنمر","سخرية","إهانة","كذب","إقصاء","استهزاء","استقواء","نميمة"];
 var gcv=$("gc"),gx=gcv.getContext("2d");
 function gAr(n){return String(n).replace(/\d/g,function(d){return "٠١٢٣٤٥٦٧٨٩"[d]})}
-function gHud(){$("gsc").textContent="النقاط: "+gAr(gSc)+" · المستوى "+gAr(gLevel);$("gtm").textContent="الوقت: "+gAr(Math.max(0,Math.ceil(gT)));var s="";for(var i=0;i<3;i++)s+=i<gLv?"♥":"♡";$("glv").textContent=s}
+function gHud(){$("gsc").textContent="النقاط: "+gAr(gSc)+" · المستوى "+gAr(gLevel);$("gtm").textContent="الوقت: "+gAr(Math.max(0,Math.ceil(gT)));var s="";for(var i=0;i<(window.c1h?4:3);i++)s+=i<gLv?"♥":"♡";$("glv").textContent=s}
 var gStreak=0,gLevel=1,gMood="h",gMoodT=0,gBan=null,gFlash=0,gClk=0,gTap=[];
 var GP=[["#17a57b","#087B59","#fff"],["#3aa0c9","#268CB5","#fff"],["#c4de76","#8fb13a","#25246F"]];
 var GAV={};function gAvImg(m){if(!GAV[m]){var im=new Image();im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -118 80 126">'+girl(0,0,1,{hj:"#087B59",u:"#A9C84D",a:"#087B59",dk:"#066249",m:m,ar:m=="b"?"w":"d"})+'</svg>');GAV[m]=im}return GAV[m]}
@@ -569,7 +569,7 @@ function oct(cx,cy,R,col,fill){x.beginPath();for(var i=0;i<16;i++){var a=-Math.P
 function dia(cx,cy,r,col){x.beginPath();x.moveTo(cx,cy-r);x.lineTo(cx+r,cy);x.lineTo(cx,cy+r);x.lineTo(cx-r,cy);x.closePath();x.fillStyle=col;x.fill()}
 x.fillStyle="#FBFAF3";x.fillRect(0,0,W,H);
 x.lineWidth=1.6;for(var gx=60;gx<W;gx+=110)for(var gy=60;gy<H;gy+=110){oct(gx,gy,40,"rgba(37,36,111,.055)",0);oct(gx+55,gy+55,14,"rgba(8,123,89,.07)",0)}
-x.lineWidth=16;x.strokeStyle=NV;x.strokeRect(30,30,W-60,H-60);x.lineWidth=4;x.strokeStyle=LM;x.strokeRect(54,54,W-108,H-108);x.lineWidth=2;x.setLineDash([2,9]);x.strokeStyle=GN;x.strokeRect(66,66,W-132,H-132);x.setLineDash([]);
+var GLD=false;try{GLD=localStorage.getItem("c1p_gold")==="1"}catch(e){}x.lineWidth=GLD?22:16;x.strokeStyle=GLD?"#D99A00":NV;x.strokeRect(30,30,W-60,H-60);x.lineWidth=GLD?7:4;x.strokeStyle=GLD?"#F7C531":LM;x.strokeRect(54,54,W-108,H-108);if(GLD){x.lineWidth=3;x.strokeStyle="#F7C53199";x.strokeRect(80,80,W-160,H-160)}x.lineWidth=2;x.setLineDash([2,9]);x.strokeStyle=GN;x.strokeRect(66,66,W-132,H-132);x.setLineDash([]);
 [[100,100],[W-100,100],[100,H-100],[W-100,H-100]].forEach(function(q){x.beginPath();x.arc(q[0],q[1],60,0,7);x.fillStyle="#FBFAF3";x.fill();oct(q[0],q[1],56,NV,1);oct(q[0],q[1],38,LM,1);oct(q[0],q[1],20,NV,1);x.beginPath();x.arc(q[0],q[1],7,0,7);x.fillStyle=GD;x.fill()});
 var im=new Image();im.onload=function(){try{
 var my=158;x.beginPath();x.arc(W/2,my,108,0,7);x.fillStyle=NV;x.fill();x.beginPath();x.arc(W/2,my,99,0,7);x.fillStyle=LM;x.fill();x.beginPath();x.arc(W/2,my,94,0,7);x.fillStyle="#fff";x.fill();x.save();x.beginPath();x.arc(W/2,my,89,0,7);x.clip();x.drawImage(im,W/2-89,my-89,178,178);x.restore();
@@ -969,4 +969,137 @@ blink();
 window.Rashid={show:show,hide:hide,fx:fx};
 })();
 </script>
+<style>
+#c1c{position:fixed;top:12px;right:12px;z-index:19;height:46px;display:flex;align-items:center;gap:6px;padding:0 14px;border:0;border-radius:14px;background:#fffffff0;box-shadow:0 4px 14px #25246f30;font:800 15px Cairo,Tahoma,sans-serif;color:#25246F;cursor:pointer;margin-top:env(safe-area-inset-top,0)}
+#c1c:active{transform:scale(.96)}
+#c1s{position:fixed;inset:0;z-index:100020;display:none;align-items:center;justify-content:center;padding:16px;background:#25246fb0;backdrop-filter:blur(4px);direction:rtl;font-family:Cairo,Tahoma,sans-serif}
+#c1s.on{display:flex}
+#c1s .cd{width:min(440px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:28px;box-shadow:0 24px 60px #0006}
+#c1s .hd{background:linear-gradient(160deg,#25246F,#14134a);color:#fff;text-align:center;padding:18px 16px 16px;border-radius:28px 28px 0 0;position:relative}
+#c1s .hd small{display:block;opacity:.9;font-weight:700}#c1s .hd b{display:inline-block;background:#ffffff2e;border-radius:99px;padding:0 18px;font-size:22px;margin:6px 0}
+#c1s .hd button{position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;border:0;background:#ffffff2e;color:#fff;font-size:17px;cursor:pointer}
+#c1s .ls{padding:14px 16px 4px;display:grid;gap:10px}
+#c1s .it{display:flex;align-items:center;gap:12px;background:#F7FAF5;border:1.5px solid #25246f12;border-radius:20px;padding:10px 12px}
+#c1s .ic{font-size:30px;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px #25246f1a;flex:none}
+#c1s .tx{flex:1;min-width:0}#c1s .tx b{display:block;color:#25246F;font-size:16px}#c1s .tx small{color:#5b6b8c;font-weight:600;font-size:13px;line-height:1.5;display:block}
+#c1s .by{border:0;border-radius:99px;background:#087B59;color:#fff;font:800 14px Cairo,sans-serif;padding:8px 14px;cursor:pointer;white-space:nowrap}
+#c1s .by:disabled{background:#d9e2d3;color:#6a7a66;cursor:default}#c1s .by.ow{background:#A9C84D;color:#25246F}
+#c1s p{margin:8px 20px 4px;font-size:13.5px;color:#5b6b8c;line-height:1.7;text-align:center}
+#c1s .cl{display:block;margin:6px auto 18px;border:2px solid #25246f33;background:#fff;color:#25246F;border-radius:99px;padding:8px 26px;font:800 15px Cairo,sans-serif;cursor:pointer}
+#c1t{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100030;background:#fff;color:#c0392b;border:1.5px solid #c0392b44;border-radius:14px;padding:6px 14px;font:700 14px Cairo,sans-serif;box-shadow:0 6px 18px #0003;max-width:88vw;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s}
+#c1t.on{opacity:1}
+</style>
+<button id="c1c" aria-label="العملات والمتجر">🪙 <b id="c1n">٠</b></button>
+<div id="c1s" role="dialog" aria-modal="true"><div class="cd" id="c1d"></div></div><div id="c1t" role="status"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},AR=function(n){return String(n).replace(/\d/g,function(d){return"٠١٢٣٤٥٦٧٨٩"[d]})};
+function g(k){try{return localStorage.getItem(k)}catch(e){return null}}function s(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function coins(){return +g("c1coins")||0}function setC(n){s("c1coins",String(Math.max(0,n)));ui()}
+function ui(){$("c1n").textContent=AR(coins())}
+function toast(t,ok){var e=$("c1t");e.textContent=t;e.style.color=ok?"#087B59":"#c0392b";e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2600)}
+function own(k){return g("c1p_"+k)==="1"}
+window.c1h=own("heart");
+var AW=[];try{AW=JSON.parse(g("c1aw")||"[]")}catch(e){}
+function award(i){if(AW.indexOf(i)>-1)return;AW.push(i);s("c1aw",JSON.stringify(AW));setC(coins()+5);toast("+٥ عملات 🪙",1);try{tone([784,1047])}catch(e){}}
+var _o=window.open;if(typeof _o==="function")window.open=function(i,b){var f=typeof i==="number"&&!window.seen[i];var r=_o.apply(this,arguments);if(f&&window.seen&&window.seen[i])award(i);return r};
+var _m=window.markSec;if(typeof _m==="function")window.markSec=function(k){var f=!window.seen[k];var r=_m.apply(this,arguments);if(f&&window.seen[k])award(k);return r};
+var _e=window.gEnd;if(typeof _e==="function")window.gEnd=function(w){var sc=window.gSc||0;var r=_e.apply(this,arguments);var c=Math.min(20,sc);if(c>0){setC(coins()+c);toast("+"+AR(c)+" عملة من اللعبة 🪙",1)}return r};
+var _s=window.gStart;if(typeof _s==="function")window.gStart=function(){var r=_s.apply(this,arguments);if(own("heart"))window.gLv=4;if(own("time"))window.gT=25;try{window.gHud()}catch(e){}return r};
+var IT=[{k:"heart",i:"❤",t:"قلب إضافي",d:"تبدأ لعبة اصطياد الكلمات الطيبة بأربعة قلوب بدل ثلاثة",p:25},{k:"time",i:"⏱",t:"وقت إضافي",d:"خمس ثوانٍ زيادة في بداية كل جولة",p:20},{k:"gold",i:"🏅",t:"إطار ذهبي للشهادة",d:"إطار ذهبي يزيّن شهادتك",p:40}];
+function shop(){var c=coins(),h='<div class="hd"><button id="c1x" aria-label="إغلاق">✕</button><small>متجر العملات</small><b>🪙 '+AR(c)+'</b><small>اشترِ مزايا تساعدك في اللعبة وتزيّن شهادتك</small></div><div class="ls">';
+IT.forEach(function(it){var o=own(it.k),can=c>=it.p;h+='<div class="it"><span class="ic">'+it.i+'</span><div class="tx"><b>'+it.t+'</b><small>'+it.d+'</small></div><button class="by'+(o?" ow":"")+'" data-k="'+it.k+'" '+(o||!can?"disabled":"")+'>'+(o?"مفعّل ✓":can?"🪙 "+AR(it.p):"ينقصك "+AR(it.p-c))+'</button></div>'});
+h+='</div><p>كيف أجمع العملات؟ ٥ عملات عند اكتشاف كل قلب لأول مرة، وعملات من نقاط لعبة اصطياد الكلمات الطيبة.</p><button class="cl" id="c1y">إغلاق</button>';
+$("c1d").innerHTML=h;$("c1s").classList.add("on");$("c1x").onclick=$("c1y").onclick=function(){$("c1s").classList.remove("on")};
+$("c1d").querySelectorAll(".by").forEach(function(b){b.onclick=function(){var it=IT.filter(function(z){return z.k===b.dataset.k})[0];if(coins()<it.p||own(it.k))return;setC(coins()-it.p);s("c1p_"+it.k,"1");if(it.k==="heart")window.c1h=true;try{tone([523,659,784,1047])}catch(e){}shop();toast("تم الشراء: "+it.t+" ✓",1)}})}
+$("c1c").onclick=shop;$("c1s").onclick=function(e){if(e.target===$("c1s"))$("c1s").classList.remove("on")};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$("c1s").classList.remove("on")});
+try{var mnd=$("mnd");if(mnd){var bt=document.createElement("button");bt.type="button";bt.className="mi";bt.innerHTML='<span class="ic">🪙</span><span><b>متجر العملات</b><small>اشترِ مزايا للعبة والشهادة</small></span>';bt.onclick=function(){mnd.classList.remove("on");var bd=$("mnbd");if(bd)bd.classList.remove("on");shop()};mnd.appendChild(bt)}}catch(e){}
+ui();
+})();
+</script>
+<style>
+#sb{padding-left:58px!important;padding-right:96px!important;gap:8px!important}#sb b{font-size:14px}#sb #c1c{position:absolute!important;top:calc(5px + env(safe-area-inset-top,0px))!important;right:10px!important;left:auto!important;height:36px!important;padding:0 14px 0 12px!important;border-radius:99px!important;margin:0!important;border:2px solid #fff!important;background:linear-gradient(135deg,#FFEFB0,#F7C531)!important;box-shadow:0 4px 12px #d99a0066,inset 0 1px 0 #fffc!important;gap:7px!important;flex-direction:row-reverse;backdrop-filter:none}#sb #c1c b{font-size:16px;font-weight:900;color:#25246F}#sb #c1c u{text-decoration:none;display:block;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6c4,#F2B84B 60%,#c99200);box-shadow:inset 0 0 0 2.5px #d99a00,0 1px 3px #0003}#c1c{gap:9px!important;padding:0 16px!important;height:50px!important;border-radius:20px!important;box-shadow:0 8px 22px #25246f26!important;border:1.5px solid #fff!important;background:#ffffffee!important;backdrop-filter:blur(10px)}
+#c1c i{width:1.5px;height:24px;background:#25246f26;margin:0 2px}#c1c span{display:flex;align-items:center;gap:5px}
+#c1st{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px auto 6px;max-width:520px}
+#c1st .tile{background:#fff;border-radius:24px;padding:12px 6px 10px;text-align:center;box-shadow:0 8px 22px #25246f1a;border:1.5px solid #25246f10;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .15s;font-family:Cairo,Tahoma,sans-serif;color:inherit}
+#c1st .tile:active{transform:scale(.96)}
+#c1st .tile b{font-size:20px;font-weight:900;color:#25246F;line-height:1.2}#c1st .tile small{font-size:12.5px;font-weight:700;color:#5b6b8c}
+#c1st .rw{position:relative;width:62px;height:62px;display:flex;align-items:center;justify-content:center}
+#c1st .rw svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+#c1st .rb{fill:none;stroke:#e3ecdc;stroke-width:5}#c1st .rf{fill:none;stroke:#087B59;stroke-width:5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .9s cubic-bezier(.3,.8,.3,1);filter:drop-shadow(0 0 3px #A9C84D)}
+#c1st .rw b{position:relative;font-size:15px}#c1st .ti{font-size:34px;filter:drop-shadow(0 4px 4px #0002)}
+#cnt,.count,.bar{display:none!important}
+.grid{position:relative}.h{z-index:1}
+.h span{justify-content:flex-start!important;padding:54% 16% 0!important}.h em{display:none!important}
+.h .hf{color:#fff}.h.lime .hf{color:#25246F}
+.h .hf .aw{display:none}.h.seen .hf .sl{display:none}.h.seen .hf .aw{display:inline}
+.h .hf path.e{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round}
+.h .hf circle.p{fill:currentColor}.h .hf circle.s{fill:#fff}.h.lime .hf circle.s{fill:#A9C84D}
+.h .hf ellipse{fill:#ff9db0;opacity:.55}
+.h.seen .hf .aw{animation:c1w .5s ease both}
+@keyframes c1w{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+.h .hf .aw,.h .hf .sl{transform-box:fill-box;transform-origin:center}
+#c1ln{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+#c1ln .tr{fill:none;stroke:#25246f40;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 13}
+#c1ln .fl{fill:none;stroke:#087B59;stroke-width:7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s ease;filter:drop-shadow(0 0 5px #A9C84Daa)}
+#c1ln .fl.on{stroke-dashoffset:0}
+.c1coin{display:block;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6c4,#F2B84B 60%,#c99200);box-shadow:inset 0 0 0 4px #d99a00,0 6px 10px #d99a0055;margin:9px 0}
+.c1u{background:linear-gradient(#A9C84D99,#A9C84D99) no-repeat 0 100%/100% 9px;border-radius:8px;padding-bottom:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.c1sl{margin:8px 0 2px;font-weight:800;font-size:clamp(22px,5.6vw,30px);color:#087B59;text-align:center;line-height:1.5}
+#c1q{margin:14px auto 4px;max-width:520px;background:#fff;border:1px solid #dfe8d8;border-inline-start:6px solid #087B59;border-radius:16px;padding:10px 18px;color:#25246F;font-weight:700;font-size:18px;line-height:1.6;box-shadow:0 4px 14px #25246f14;min-height:56px;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .5s}
+</style>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},AR=function(n){return String(n).replace(/\d/g,function(d){return"٠١٢٣٤٥٦٧٨٩"[d]})};
+var grid=$("grid");if(!grid)return;
+var NS="http://www.w3.org/2000/svg";
+/* faces */
+[].forEach.call(grid.children,function(h){var sv=h.querySelector("svg");if(!sv||sv.querySelector(".hf"))return;
+sv.insertAdjacentHTML("beforeend",'<g class="hf"><g class="sl"><path class="e" d="M30 29q6 5 12 0"/><path class="e" d="M58 29q6 5 12 0"/><path class="e" d="M45 40q5 3.5 10 0" style="stroke-width:2.6"/></g><g class="aw"><circle class="p" cx="36" cy="29" r="4.6"/><circle class="p" cx="64" cy="29" r="4.6"/><circle class="s" cx="37.6" cy="27.4" r="1.5"/><circle class="s" cx="65.6" cy="27.4" r="1.5"/><path class="e" d="M38 38q12 12 24 0" style="stroke-width:3.4"/><ellipse cx="27" cy="38" rx="5" ry="3"/><ellipse cx="73" cy="38" rx="5" ry="3"/></g></g>')});
+/* lines */
+var ln=document.createElementNS(NS,"svg");ln.id="c1ln";grid.appendChild(ln);
+function seenAt(i){return grid.children[i+1]&&grid.children[i+1].classList.contains("seen")}
+function lines(){var hs=[].slice.call(grid.querySelectorAll(".h")),P=hs.map(function(h){return[h.offsetLeft+h.offsetWidth/2,h.offsetTop+h.offsetHeight*.4,h.offsetHeight]});
+ln.setAttribute("viewBox","0 0 "+grid.offsetWidth+" "+grid.offsetHeight);var s="";
+for(var i=0;i<P.length-1;i++){var a=P[i],b=P[i+1],my=(a[1]+b[1])/2,d=Math.abs(a[1]-b[1])<50?"M"+a[0]+" "+a[1]+"C"+(a[0]+b[0])/2+" "+a[1]+" "+(a[0]+b[0])/2+" "+b[1]+" "+b[0]+" "+b[1]:"M"+a[0]+" "+a[1]+"C"+a[0]+" "+my+" "+b[0]+" "+my+" "+b[0]+" "+b[1];
+s+='<path class="tr" d="'+d+'"/><path class="fl'+(hs[i].classList.contains("seen")&&hs[i+1].classList.contains("seen")?" on":"")+'" pathLength="1" d="'+d+'"/>'}
+ln.innerHTML=s}
+/* stats tiles */
+var cnt=$("cnt"),st=document.createElement("div");st.id="c1st";
+st.innerHTML='<button type="button" class="tile" id="t1"><div class="rw"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" class="rb"/><circle id="c1r" cx="22" cy="22" r="18" class="rf" pathLength="100"/></svg><b id="c1rn">٠/٨</b></div><small>القلوب المضيئة</small></button><button type="button" class="tile" id="t2"><div class="rw"><u class="c1coin"></u></div><b id="c1tn">٠</b><small>متجر العملات</small></button><button type="button" class="tile" id="t3"><div class="rw"><span class="ti" id="c1ti">🔒</span></div><b id="c1ts">مغلقة</b><small>الشهادة</small></button>';
+cnt.parentNode.insertBefore(st,cnt);
+var qb=document.createElement("div");qb.id="c1q";cnt.parentNode.insertBefore(qb,cnt);
+var Q1=["بروح الفريق نصل إلى النجاح","لنفخر بأنفسنا، فنحن قادرون على الوصول ما دمنا نسعى ونحاول","تنظيم الوقت يعني أن نمنح كل مهمة وقتها المناسب","التفكير الجيد قبل اختيار الإجابة مهم، فالمعرفة تبدأ بالسؤال","كل خطوة إلى الأمام تستحق أن نفخر بها","دام عزك يا وطن، ودامت رايتك خفاقة"],Q2=["الصدق يظهر في أفعالنا حتى عندما لا يرانا أحد","كن صادقاً.. تكن موثوقاً","الاعتراف بالخطأ شجاعة","بالصدق نرتقي، وبالأمانة نبني الثقة","وفِّ بوعدك تكسب الثقة","الصدق طريق النجاة"],QQ=document.title.indexOf("الثاني")>-1?Q2:Q1,qi=0;
+qb.textContent="«"+QQ[0]+"»";setInterval(function(){qb.style.opacity=0;setTimeout(function(){qi=(qi+1)%QQ.length;qb.textContent="«"+QQ[qi]+"»";qb.style.opacity=1},500)},4500);
+var sub0=document.querySelector("header .sub");if(sub0&&!document.querySelector(".c1sl")){var sl=document.createElement("p");sl.className="c1sl";sl.style.fontSize="min(4.7vw,22px)";sl.innerHTML='<span class="c1u">«يد واحدة لا تصفق، وبالتعاون نصنع الإنجاز»</span>';sub0.parentNode.insertBefore(sl,sub0)}
+
+var chip=$("c1c"),sbx=$("sb");if(sbx)sbx.appendChild(chip);
+function nSeen(){return grid.querySelectorAll(".h.seen").length}
+function certOk(){var c=$("ct");return c&&getComputedStyle(c).display!=="none"}
+function sync(){var n=nSeen(),ok=certOk();$("c1r").style.strokeDashoffset=100-n/8*100;$("c1rn").textContent=AR(n)+"/٨";
+var cn=+(localStorage.getItem("c1coins")||0);$("c1tn").textContent=AR(cn);$("c1ts").textContent=ok?"جاهزة":"مغلقة";$("c1ti").textContent=ok?"🎓":"🔒";
+chip.innerHTML='<u></u><b id="c1n">'+AR(cn)+'</b>';lines()}
+$("t1").onclick=function(){var n=nSeen();var t=$("c1t");t.textContent=n>=8?"أضأت كل القلوب 🎉":"بقي "+AR(8-n)+" من القلوب النائمة لتضيئها";t.style.color="#087B59";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2400)};
+$("t2").onclick=function(){chip.click()};
+$("t3").onclick=function(){if(certOk())$("ct").click();else{var t=$("c1t");t.textContent="الشهادة مغلقة، افتح القلوب الثمانية أولاً (بقي "+AR(8-nSeen())+")";t.style.color="#c0392b";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2800)}};
+try{new MutationObserver(sync).observe(grid,{attributes:true,subtree:true,attributeFilter:["class"]})}catch(e){}
+var co=localStorage.getItem.bind(localStorage);
+var _si=localStorage.setItem.bind(localStorage);Storage.prototype.setItem=function(k,v){_si.call(this,k,v);if(k==="c1coins")setTimeout(sync,0)};
+window.addEventListener("resize",lines);window.addEventListener("load",function(){setTimeout(sync,300)});
+if(window.ResizeObserver)new ResizeObserver(lines).observe(grid);
+setInterval(function(){if(certOk()!==(($("c1ti").textContent)==="🎓"))sync()},1500);
+sync();setTimeout(sync,800);
+})();
+</script>
+<style>
+#c1w{position:fixed;inset:0;z-index:100040;display:none;align-items:center;justify-content:center;padding:18px;background:#25246fb0;backdrop-filter:blur(4px);direction:rtl;font-family:Cairo,Tahoma,sans-serif}
+#c1w.on{display:flex}#c1w .cd{width:min(380px,100%);background:#fff;border-radius:28px;padding:26px 22px 22px;text-align:center;box-shadow:0 24px 60px #0006}
+#c1w .e{font-size:52px;line-height:1.2}#c1w h3{margin:6px 0 4px;color:#25246F;font-size:22px}#c1w p{margin:0 0 16px;color:#5b6b8c;font-weight:600;line-height:1.8}
+#c1w button{border:0;border-radius:99px;background:#087B59;color:#fff;font:800 16px Cairo,sans-serif;padding:10px 34px;cursor:pointer}
+</style>
+<div id="c1w" role="dialog" aria-modal="true"><div class="cd"><div class="e">🚧</div><h3>العدد الثاني قيد الإنشاء</h3><p>نعمل على تجهيزه، وسيكون بين أيديكم قريبًا بإذن الله.</p><button type="button" id="c1wx">حسنًا</button></div></div>
+<script>(function(){var w=document.getElementById("c1w");function cl(){w.classList.remove("on")}document.getElementById("c1wx").onclick=cl;w.onclick=function(e){if(e.target===w)cl()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")cl()});
+document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#mn2");if(!t)return;e.preventDefault();var x=document.getElementById("mnx");if(x)x.click();w.classList.add("on")},true)})();</script>
 </body></html>
