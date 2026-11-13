@@ -691,7 +691,7 @@ function go(t){try{if(window.goatcounter&&window.goatcounter.count){window.goatc
 if(!go()){var k=0,iv=setInterval(function(){if(go()||++k>20)clearInterval(iv)},500)}}
 var g=document.getElementById("grid");if(g)g.addEventListener("click",function(){ev("ev-start",1)},true);
 var c=document.getElementById("cnt");if(c)new MutationObserver(function(){if(/8\s*من\s*8/.test(c.textContent))ev("ev-finish",1)}).observe(c,{childList:true,characterData:true,subtree:true});
-document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#pr,#pr2,#pra");if(!t)return;var n=document.getElementById("cn");if(n&&n.textContent.trim())ev("ev-cert",0)},true)
+document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#pr,#pr2,#pra");if(!t)return;var n=document.getElementById("cn");if(n&&n.textContent.trim())ev("ev-cert",1)},true)
 })();</script>
 <style id="admc">
 #spn{position:fixed;inset:0;z-index:100010;display:none;overflow:auto;background:radial-gradient(#087B5914 1.5px,transparent 1.6px) 0 0/24px 24px,radial-gradient(circle at 12% 0,#A9C84D38,transparent 42%),radial-gradient(circle at 92% 12%,#268CB52b,transparent 40%),#F7FAF5;font-family:Cairo,Tahoma,sans-serif;direction:rtl;color:#2b2b44;padding:22px 16px;line-height:1.7}
@@ -712,14 +712,14 @@ document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&
 </style>
 <div id="spn" role="dialog" aria-label="لوحة المشرفين"><div class="aw">
 <div id="ag" class="bx"><h2>لوحة المشرفين</h2><p class="s">أدخل رمز المشرف للمتابعة.</p><input id="ac" type="password" autocomplete="off" placeholder="رمز المشرف"><div class="er" id="ae"></div><button id="ago" type="button">دخول</button> <button id="agx" class="gr" type="button">إغلاق</button></div>
-<div id="ad"><h2>إحصائيات المجلة</h2><p class="s">أرقام تقريبية تُحدَّث عند فتح اللوحة.</p>
+<div id="ad"><h2>إحصائيات المجلة</h2><p class="s">أرقام تقريبية، وقد يتأخر ظهور آخر الزيارات حتى ٤ ساعات.</p>
 <div class="g">
 <div class="c" style="--c:#25246F"><b id="an_total">…</b><span>إجمالي الزيارات</span></div>
 <div class="c" style="--c:#268CB5"><b id="an_start">…</b><span>بدأوا القراءة</span><small>فتحوا قلبًا واحدًا على الأقل</small></div>
 <div class="c" style="--c:#087B59"><b id="an_finish">…</b><span>أنهوا المجلة</span><small>اكتشفوا الأقسام الثمانية</small></div>
-<div class="c" style="--c:#7aa22a"><b id="an_cert">…</b><span>حفظوا الشهادة</span><small>مرات حفظ الشهادة</small></div>
+<div class="c" style="--c:#7aa22a"><b id="an_cert">…</b><span>حفظوا الشهادة</span><small>عدد الأجهزة التي حُفظت منها شهادة</small></div>
 </div><div class="pc" id="arate">…</div>
-<div class="bx" style="margin-top:14px"><p class="nt">الأرقام تبدأ من تاريخ رفع آخر نسخة، ولا تشمل من يمنع الإحصائيات في متصفحه. «بدأوا» و«أنهوا» تُحسب مرة لكل جهاز، و«الشهادة» في كل مرة تُحفظ.</p>
+<div class="bx" style="margin-top:14px"><p class="nt">الأرقام تراكمية من بداية تفعيل العدّاد، ولا تشمل من يمنع الإحصائيات في متصفحه. «بدأوا» و«أنهوا» و«الشهادة» تُحسب مرة لكل جهاز. وأسماء من حفظوا الشهادة تجدينها في جدول Google Sheets.</p>
 <a class="lk" href="https://rawdat-aluloom.goatcounter.com" target="_blank" rel="noopener">فتح لوحة GoatCounter الكاملة</a></div>
 <button id="aout" type="button">إغلاق اللوحة</button></div>
 </div></div>
@@ -728,10 +728,10 @@ var H="3879b22a38ba289c5e1f6373e6d044e2ae3cfd7fa336d66c70ad64bfe9d1f047",B="http
 function $(i){return document.getElementById(i)}
 function ar(n){return String(n).replace(/\d/g,function(d){return"٠١٢٣٤٥٦٧٨٩"[d]})}
 var vals={};
-function get(k,p){return fetch(B+encodeURIComponent(p)+".json",{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){var n=j?parseInt(String(j.count).replace(/[^\d]/g,""),10):NaN;vals[k]=isFinite(n)?n:0;$("an_"+k).textContent=ar((isFinite(n)?n:0).toLocaleString("en-US").replace(/,/g,"،"))}).catch(function(){vals[k]=0;$("an_"+k).textContent="٠"})}
+function get(k,p){return fetch(B+encodeURIComponent(p)+".json?_="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){var n=j?parseInt(String(j.count).replace(/[^\d]/g,""),10):NaN;vals[k]=isFinite(n)?n:0;$("an_"+k).textContent=ar((isFinite(n)?n:0).toLocaleString("en-US").replace(/,/g,"،"))}).catch(function(){vals[k]=0;$("an_"+k).textContent="٠"})}
 function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")})}
 function dash(){$("ag").style.display="none";$("ad").style.display="block";
-Promise.all([get("total","TOTAL"),get("start","ev-start"),get("finish","ev-finish"),get("cert","ev-cert")]).then(function(){var s=vals.start,f=vals.finish;$("arate").textContent=s?"نسبة من أنهوا المجلة من الذين بدأوا: "+ar(Math.round(f/s*100))+"٪":"لا توجد بيانات كافية بعد"})}
+Promise.all([get("total","TOTAL"),get("start","ev-start"),get("finish","ev-finish"),get("cert","ev-cert")]).then(function(){var s=vals.start,f=vals.finish;if(vals.finish>vals.start){vals.start=vals.finish;s=f;$("an_start").textContent=ar(s.toLocaleString("en-US").replace(/,/g,"،"))}if(vals.total<vals.start){vals.total=vals.start;$("an_total").textContent=ar(vals.total.toLocaleString("en-US").replace(/,/g,"،"))}if(f>s)f=s;$("arate").textContent=s?"نسبة من أنهوا المجلة من الذين بدأوا: "+ar(Math.round(f/s*100))+"٪":"لا توجد بيانات كافية بعد"})}
 function openA(){$("spn").classList.add("on");document.body.style.overflow="hidden";var ok=0;window.__admk="";
 if(ok)dash();else{$("ag").style.display="block";$("ad").style.display="none";$("ac").value="";$("ae").textContent="";setTimeout(function(){$("ac").focus()},50)}}
 function closeA(){$("spn").classList.remove("on");document.body.style.overflow="";window.__admk="";$("ad").style.display="none";$("ag").style.display="block";$("ac").value=""}
