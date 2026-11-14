@@ -570,7 +570,7 @@ function oct(cx,cy,R,col,fill){x.beginPath();for(var i=0;i<16;i++){var a=-Math.P
 function dia(cx,cy,r,col){x.beginPath();x.moveTo(cx,cy-r);x.lineTo(cx+r,cy);x.lineTo(cx,cy+r);x.lineTo(cx-r,cy);x.closePath();x.fillStyle=col;x.fill()}
 x.fillStyle="#FBFAF3";x.fillRect(0,0,W,H);
 x.lineWidth=1.6;for(var gx=60;gx<W;gx+=110)for(var gy=60;gy<H;gy+=110){oct(gx,gy,40,"rgba(37,36,111,.055)",0);oct(gx+55,gy+55,14,"rgba(8,123,89,.07)",0)}
-var GLD=false;try{GLD=localStorage.getItem("c1p_gold")==="1"}catch(e){}x.lineWidth=GLD?22:16;x.strokeStyle=GLD?"#D99A00":NV;x.strokeRect(30,30,W-60,H-60);x.lineWidth=GLD?7:4;x.strokeStyle=GLD?"#F7C531":LM;x.strokeRect(54,54,W-108,H-108);if(GLD){x.lineWidth=3;x.strokeStyle="#F7C53199";x.strokeRect(80,80,W-160,H-160)}x.lineWidth=2;x.setLineDash([2,9]);x.strokeStyle=GN;x.strokeRect(66,66,W-132,H-132);x.setLineDash([]);
+var TT0=[["صديق التعاون","صديقة التعاون"],["بطل اللطف","بطلة اللطف"],["نجم الإنجاز","نجمة الإنجاز"],["محب الوطن","محبة الوطن"],["قدوة حسنة","قدوة حسنة"]];var GLD=false;try{GLD=localStorage.getItem("c1p_gold")==="1"}catch(e){}x.lineWidth=GLD?22:16;x.strokeStyle=GLD?"#D99A00":NV;x.strokeRect(30,30,W-60,H-60);x.lineWidth=GLD?7:4;x.strokeStyle=GLD?"#F7C531":LM;x.strokeRect(54,54,W-108,H-108);if(GLD){x.lineWidth=3;x.strokeStyle="#F7C53199";x.strokeRect(80,80,W-160,H-160)}x.lineWidth=2;x.setLineDash([2,9]);x.strokeStyle=GN;x.strokeRect(66,66,W-132,H-132);x.setLineDash([]);
 [[100,100],[W-100,100],[100,H-100],[W-100,H-100]].forEach(function(q){x.beginPath();x.arc(q[0],q[1],60,0,7);x.fillStyle="#FBFAF3";x.fill();oct(q[0],q[1],56,NV,1);oct(q[0],q[1],38,LM,1);oct(q[0],q[1],20,NV,1);x.beginPath();x.arc(q[0],q[1],7,0,7);x.fillStyle=GD;x.fill()});
 var im=new Image();im.onload=function(){try{
 var my=158;x.beginPath();x.arc(W/2,my,108,0,7);x.fillStyle=NV;x.fill();x.beginPath();x.arc(W/2,my,99,0,7);x.fillStyle=LM;x.fill();x.beginPath();x.arc(W/2,my,94,0,7);x.fillStyle="#fff";x.fill();x.save();x.beginPath();x.arc(W/2,my,89,0,7);x.clip();x.drawImage(im,W/2-89,my-89,178,178);x.restore();
@@ -584,8 +584,16 @@ T("شهادة شكر وتقدير",W/2,ry+2,72,"#fff",800);
 T(G=="f"?"تُمنح هذه الشهادة للطالبة المتميزة في القراءة":"تُمنح هذه الشهادة للطالب المتميز في القراءة",W/2,486,38,GN,700);
 var n=$("cn").textContent,sz=100;x.font="800 "+sz+"px "+F;while(x.measureText(n).width>1000&&sz>36){sz-=4;x.font="800 "+sz+"px "+F}T(n,W/2,566,sz,NV,800);
 [-1,1].forEach(function(s){x.beginPath();x.moveTo(W/2+s*40,636);x.lineTo(W/2+s*380,636);x.lineWidth=3;x.strokeStyle=GD;x.stroke();dia(W/2+s*392,636,6,GN)});oct(W/2,636,16,GD,1);oct(W/2,636,8,NV,1);
+try{var _t=localStorage.getItem("c1p_title")==="1"?localStorage.getItem("c1ttl"):null;if(_t!==null&&_t!==""&&TT0[+_t]){var tx=TT0[+_t][G=="f"?1:0];x.font="800 38px "+F;var tw=Math.max(240,x.measureText(tx).width+90);x.fillStyle="#FBFAF3";x.fillRect(W/2-tw/2-24,636-30,tw+48,60);x.beginPath();x.moveTo(W/2-tw/2,636-26);x.lineTo(W/2+tw/2,636-26);x.quadraticCurveTo(W/2+tw/2+26,636,W/2+tw/2,636+26);x.lineTo(W/2-tw/2,636+26);x.quadraticCurveTo(W/2-tw/2-26,636,W/2-tw/2,636-26);x.closePath();x.fillStyle=GN;x.fill();x.lineWidth=3;x.strokeStyle=GD;x.stroke();T(tx,W/2,636+2,38,"#fff",800)}
+var _k=localStorage.getItem("c1p_stk")==="1"?localStorage.getItem("c1stk"):"";if(_k){[-1,1].forEach(function(sd){var sx=W/2+sd*330,sy=my;x.beginPath();x.arc(sx,sy,50,0,7);x.fillStyle="#FBFAF3";x.fill();x.lineWidth=3;x.strokeStyle=GD;x.stroke();stk(_k,sx,sy,1)})}}catch(e){}
 T(GF("تقديرًا لإنهاء جميع أقسام المجلة الثمانية بنجاح،"),W/2,696,38,"#2f3a7a",600);T(GF("والاهتمام بالقيم والمعارف التربوية فيها."),W/2,744,38,"#2f3a7a",600);
 T("التاريخ: "+$("cd").textContent,W/2,794,28,GN,700);
+function stk(k,cx,cy,sc){x.save();x.translate(cx,cy);x.scale(sc,sc);x.lineJoin="round";x.lineWidth=5;x.strokeStyle=NV;
+if(k=="star"){x.beginPath();for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5,r=i%2?17:38;x[i?"lineTo":"moveTo"](Math.cos(a)*r,Math.sin(a)*r+3)}x.closePath();x.fillStyle="#F7C531";x.fill();x.stroke()}
+else if(k=="crown"){x.beginPath();x.moveTo(-34,24);x.lineTo(-38,-18);x.lineTo(-16,2);x.lineTo(0,-30);x.lineTo(16,2);x.lineTo(38,-18);x.lineTo(34,24);x.closePath();x.fillStyle="#F7C531";x.fill();x.stroke();[[-38,-18],[0,-30],[38,-18]].forEach(function(p){x.beginPath();x.arc(p[0],p[1],6,0,7);x.fillStyle="#087B59";x.fill()});x.fillStyle=NV;x.fillRect(-26,12,52,6)}
+else if(k=="shield"){x.beginPath();x.moveTo(0,-38);x.lineTo(32,-26);x.lineTo(32,4);x.quadraticCurveTo(30,26,0,40);x.quadraticCurveTo(-30,26,-32,4);x.lineTo(-32,-26);x.closePath();x.fillStyle=SKc;x.fill();x.stroke();x.beginPath();x.moveTo(-14,2);x.lineTo(-4,13);x.lineTo(16,-12);x.lineWidth=7;x.strokeStyle="#fff";x.lineCap="round";x.stroke()}
+else{x.beginPath();x.moveTo(0,32);x.bezierCurveTo(-44,4,-30,-34,0,-14);x.bezierCurveTo(30,-34,44,4,0,32);x.closePath();x.fillStyle="#e8465a";x.fill();x.stroke();x.beginPath();x.ellipse(-14,-8,7,4,-.6,0,7);x.fillStyle="#ffffff88";x.fill()}
+x.restore()}
 function pen(col,w){x.lineCap="round";x.lineJoin="round";x.strokeStyle=col;x.lineWidth=w}
 function sg0(cx,y){pen(NV,3.2);x.beginPath();x.moveTo(cx-90,y+10);x.bezierCurveTo(cx-80,y-52,cx-40,y-52,cx-48,y-6);x.bezierCurveTo(cx-54,y+22,cx-6,y+10,cx+2,y-26);x.bezierCurveTo(cx+8,y-48,cx+30,y-30,cx+18,y-4);x.bezierCurveTo(cx+10,y+14,cx+50,y+18,cx+96,y-14);x.stroke();pen(NV,2);x.beginPath();x.moveTo(cx-70,y+22);x.bezierCurveTo(cx-10,y+30,cx+50,y+24,cx+100,y+14);x.stroke()}
 function sg1(cx,y){pen("#1b4a8a",3);x.beginPath();x.moveTo(cx-72,y+8);x.lineTo(cx-50,y-34);x.lineTo(cx-32,y+10);x.lineTo(cx-10,y-30);x.bezierCurveTo(cx+4,y-54,cx+34,y-14,cx+10,y-4);x.bezierCurveTo(cx-6,y+4,cx+30,y+18,cx+72,y-10);x.stroke();x.beginPath();x.arc(cx+80,y-34,3,0,7);x.fillStyle="#1b4a8a";x.fill();pen("#1b4a8a",2);x.beginPath();x.moveTo(cx-60,y+20);x.lineTo(cx+60,y+16);x.stroke()}
@@ -722,7 +730,7 @@ document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&
 </div><div class="pc" id="arate">…</div>
 <div class="bx" style="margin-top:14px"><p class="nt">الأرقام تراكمية من بداية تفعيل العدّاد، ولا تشمل من يمنع الإحصائيات في متصفحه. «بدأوا» و«أنهوا» و«الشهادة» تُحسب مرة لكل جهاز. وأسماء من حفظوا الشهادة تجدينها في جدول Google Sheets.</p>
 <a class="lk" href="https://rawdat-aluloom.goatcounter.com" target="_blank" rel="noopener">فتح لوحة GoatCounter الكاملة</a></div>
-<div class="bx"><p class="nt">إعادة ضبط صفحتي: تمسح تقدّمي وعملاتي واسمي في هذا المتصفح فقط، ولا تؤثر على بقية الزوار ولا على الإحصائيات.</p><button id="arst" type="button" class="gr">🔄 إعادة ضبط صفحتي</button></div><button id="aout" type="button">إغلاق اللوحة</button></div>
+<div class="bx"><p class="nt">إعادة ضبط صفحتي: تمسح تقدّمي وعملاتي واسمي في هذا المتصفح فقط، ولا تؤثر على بقية الزوار ولا على الإحصائيات.</p><button id="arst" type="button" class="gr">🔄 إعادة ضبط صفحتي</button></div><div class="bx"><p class="nt">للتجربة: تضيف ١٠٠ عملة لرصيدك في هذا المتصفح فقط.</p><button id="a100" type="button">🪙 أعطني ١٠٠ عملة</button><div class="er" id="a100m" style="color:#087B59"></div></div><button id="aout" type="button">إغلاق اللوحة</button></div>
 </div></div>
 <script id="admj">(function(){
 var H="3879b22a38ba289c5e1f6373e6d044e2ae3cfd7fa336d66c70ad64bfe9d1f047",B="https://rawdat-aluloom.goatcounter.com/counter/";
@@ -737,6 +745,7 @@ function openA(){$("spn").classList.add("on");document.body.style.overflow="hidd
 if(ok)dash();else{$("ag").style.display="block";$("ad").style.display="none";$("ac").value="";$("ae").textContent="";setTimeout(function(){$("ac").focus()},50)}}
 function closeA(){$("spn").classList.remove("on");document.body.style.overflow="";window.__admk="";$("ad").style.display="none";$("ag").style.display="block";$("ac").value=""}
 function tryIn(){var v=$("ac").value.trim();if(!v)return;sha(v).then(function(h){if(h===H){window.__admk=v;dash()}else $("ae").textContent="الرمز غير صحيح"})}
+$("a100").onclick=function(){try{var n=(+localStorage.getItem("c1coins")||0)+100;localStorage.setItem("c1coins",String(n));$("a100m").textContent="تمت الإضافة ✓ رصيدك الآن: "+ar(n);var c=document.getElementById("c1n");if(c)c.textContent=ar(n);var t=document.getElementById("c1tn");if(t)t.textContent=ar(n)}catch(e){$("a100m").textContent="تعذّرت الإضافة"}};
 var rt=0;$("arst").onclick=function(){var b=this;if(!rt){rt=1;b.textContent="اضغط مرة ثانية للتأكيد";b.style.background="#b3261e";setTimeout(function(){rt=0;b.textContent="🔄 إعادة ضبط صفحتي";b.style.background=""},4000);return}try{var ks=[];for(var i=0;i<localStorage.length;i++)ks.push(localStorage.key(i));ks.forEach(function(k){if(!/^(ev_|sv_|i2_|vc$|did$|snd$)/.test(k))localStorage.removeItem(k)})}catch(e){}try{sessionStorage.clear()}catch(e){}location.reload()};$("ago").onclick=tryIn;$("ac").onkeydown=function(e){if(e.key=="Enter")tryIn()};$("agx").onclick=closeA;$("aout").onclick=closeA;
 document.addEventListener("keydown",function(e){if(e.key=="Escape"&&$("spn").classList.contains("on"))closeA()});
 document.addEventListener("DOMContentLoaded",function(){var d=$("mnd");if(!d)return;var b=document.createElement("button");b.type="button";b.className="mi";b.id="mna";b.innerHTML='<span class="ic">م</span><span><b>لوحة المشرفين</b><small>إحصائيات المجلة، برمز المشرف</small></span>';d.appendChild(b);b.onclick=function(){var x=$("mnx");if(x)x.click();openA()}});
@@ -838,7 +847,7 @@ function wait1(cb,t){t=t||0;if(CB||t>80){cb();return}setTimeout(function(){wait1
 function post(n,g){try{fetch(URL_S,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({n:n,g:g=="f"?"f":"m"})}).catch(function(){})}catch(e){}}
 function r1(){CB=null;$("pv2").style.display="none";var im=$("cim"),st=$("cst");im.removeAttribute("src");st.textContent="جارٍ تجهيز الشهادة...";
 draw(SV.n,SV.d,G).then(function(b){CB=b;show(im,st,b,r1)})}
-function gk(){try{return localStorage.getItem("c1p_gold")==="1"?"G":"N"}catch(e){return"N"}}
+function gk(){try{var l=localStorage;return(l.getItem("c1p_gold")==="1"?"G":"N")+(l.getItem("c1p_title")==="1"?l.getItem("c1ttl"):"")+"|"+(l.getItem("c1p_stk")==="1"?l.getItem("c1stk"):"")}catch(e){return"N"}}
 function r2(){if(!X.c2)return;var c=X.c2,im=$("cim2"),st=$("cst2");B2=null;im.removeAttribute("src");st.textContent="جارٍ تجهيز الشهادة...";cur2=c.n+"|"+c.g+"|"+gk();
 draw(c.n,c.d,c.g).then(function(b){B2=b;show(im,st,b,r2)})}
 $("xok").onclick=function(){var n=stage?pend:$("xn").value.trim();if(!n){err("الاسم مطلوب أولًا");return}
@@ -1008,11 +1017,15 @@ var _o=window.open;if(typeof _o==="function")window.open=function(i,b){var f=typ
 var _m=window.markSec;if(typeof _m==="function")window.markSec=function(k){var f=!window.seen[k];var r=_m.apply(this,arguments);if(f&&window.seen[k])award(k);return r};
 var _e=window.gEnd;if(typeof _e==="function")window.gEnd=function(w){var sc=window.gSc||0;var r=_e.apply(this,arguments);var c=Math.min(20,sc);if(c>0){setC(coins()+c);toast("+"+AR(c)+" عملة من اللعبة 🪙",1)}return r};
 var _s=window.gStart;if(typeof _s==="function")window.gStart=function(){var r=_s.apply(this,arguments);if(own("heart"))window.gLv=4;if(own("time"))window.gT=25;try{window.gHud()}catch(e){}return r};
-var IT=[{k:"heart",i:"❤",t:"قلب إضافي",d:"تبدأ لعبة اصطياد الكلمات الطيبة بأربعة قلوب بدل ثلاثة",p:25},{k:"time",i:"⏱",t:"وقت إضافي",d:"خمس ثوانٍ زيادة في بداية كل جولة",p:20},{k:"gold",i:"🏅",t:"إطار ذهبي للشهادة",d:"إطار ذهبي يزيّن شهادتك",p:40}];
+var TT=[["صديق التعاون","صديقة التعاون"],["بطل اللطف","بطلة اللطف"],["نجم الإنجاز","نجمة الإنجاز"],["محب الوطن","محبة الوطن"],["قدوة حسنة","قدوة حسنة"]],SK=[["star","⭐ نجمة"],["crown","👑 تاج"],["shield","🛡️ درع"],["heart","❤️ قلب"]];
+var IT=[{k:"gold",i:"🏅",t:"إطار ذهبي للشهادة",d:"إطار ذهبي يزيّن شهادتك",p:40},{k:"title",i:"🎖",t:"لقب على الشهادة",d:"اختر لقبًا جميلًا يُكتب على شهادتك",p:30},{k:"stk",i:"🌟",t:"ملصقات الشهادة",d:"اختر ملصقًا يزيّن أعلى شهادتك",p:25},{k:"heart",i:"❤",t:"قلب إضافي",d:"تبدأ لعبة اصطياد الكلمات الطيبة بأربعة قلوب بدل ثلاثة",p:25},{k:"time",i:"⏱",t:"وقت إضافي",d:"خمس ثوانٍ زيادة في بداية كل جولة",p:20}];
 function shop(){var c=coins(),h='<div class="hd"><button id="c1x" aria-label="إغلاق">✕</button><small>متجر العملات</small><b>🪙 '+AR(c)+'</b><small>اشترِ مزايا تساعدك في اللعبة وتزيّن شهادتك</small></div><div class="ls">';
-IT.forEach(function(it){var o=own(it.k),can=c>=it.p;h+='<div class="it"><span class="ic">'+it.i+'</span><div class="tx"><b>'+it.t+'</b><small>'+it.d+'</small></div><button class="by'+(o?" ow":"")+'" data-k="'+it.k+'" '+(o||!can?"disabled":"")+'>'+(o?"مفعّل ✓":can?"🪙 "+AR(it.p):"ينقصك "+AR(it.p-c))+'</button></div>'});
+IT.forEach(function(it){var o=own(it.k),can=c>=it.p;h+='<div class="it"><span class="ic">'+it.i+'</span><div class="tx"><b>'+it.t+'</b><small>'+it.d+'</small></div><button class="by'+(o?" ow":"")+'" data-k="'+it.k+'" '+(o||!can?"disabled":"")+'>'+(o?"مفعّل ✓":can?"🪙 "+AR(it.p):"ينقصك "+AR(it.p-c))+'</button></div>';
+if(o&&it.k==="title"){var cu=g("c1ttl")||"";h+='<div class="pk"><button data-t="" class="'+(cu===""?"on":"")+'">بدون</button>'+TT.map(function(z,i){return '<button data-t="'+i+'" class="'+(cu===String(i)?"on":"")+'">'+z[0]+' / '+z[1]+'</button>'}).join("")+'</div>'}
+if(o&&it.k==="stk"){var cs=g("c1stk")||"";h+='<div class="pk"><button data-s="" class="'+(cs===""?"on":"")+'">بدون</button>'+SK.map(function(z){return '<button data-s="'+z[0]+'" class="'+(cs===z[0]?"on":"")+'">'+z[1]+'</button>'}).join("")+'</div>'}});
 h+='</div><p>كيف أجمع العملات؟ ٥ عملات عند اكتشاف كل قلب لأول مرة، وعملات من نقاط لعبة اصطياد الكلمات الطيبة.</p><button class="cl" id="c1y">إغلاق</button>';
 $("c1d").innerHTML=h;$("c1s").classList.add("on");$("c1x").onclick=$("c1y").onclick=function(){$("c1s").classList.remove("on")};
+$("c1d").querySelectorAll(".pk button").forEach(function(b){b.onclick=function(){if(b.hasAttribute("data-t"))s("c1ttl",b.getAttribute("data-t"));else s("c1stk",b.getAttribute("data-s"));var y=$("c1d").scrollTop;shop();try{$("c1d").scrollTop=y}catch(e){}}});
 $("c1d").querySelectorAll(".by").forEach(function(b){b.onclick=function(){var it=IT.filter(function(z){return z.k===b.dataset.k})[0];if(coins()<it.p||own(it.k))return;setC(coins()-it.p);s("c1p_"+it.k,"1");if(it.k==="heart")window.c1h=true;try{tone([523,659,784,1047])}catch(e){}shop();toast("تم الشراء: "+it.t+" ✓",1)}})}
 $("c1c").onclick=shop;$("c1s").onclick=function(e){if(e.target===$("c1s"))$("c1s").classList.remove("on")};
 document.addEventListener("keydown",function(e){if(e.key==="Escape")$("c1s").classList.remove("on")});
@@ -1086,7 +1099,7 @@ var cn=+(localStorage.getItem("c1coins")||0);$("c1tn").textContent=AR(cn);$("c1t
 chip.innerHTML='<u></u><b id="c1n">'+AR(cn)+'</b>';lines()}
 $("t1").onclick=function(){var n=nSeen();var t=$("c1t");t.textContent=n>=8?"أضأت كل القلوب 🎉":"بقي "+AR(8-n)+" من القلوب النائمة لتضيئها";t.style.color="#087B59";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2400)};
 $("t2").onclick=function(){chip.click()};
-$("t3").onclick=function(){if(certOk())$("ct").click();else{var t=$("c1t");t.textContent="الشهادة مغلقة، افتح القلوب الثمانية أولاً (بقي "+AR(8-nSeen())+")";t.style.color="#c0392b";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2800)}};
+$("t3").onclick=function(){if(certOk())$("ct").click();else{var t=$("c1t"),all8=nSeen()>=8;t.textContent=all8?"الشهادة مغلقة، بقيت اللعبة 🎮":"الشهادة مغلقة، افتح القلوب الثمانية أولاً (بقي "+AR(8-nSeen())+")";if(all8&&typeof openReq==="function")setTimeout(openReq,1200);t.style.color="#c0392b";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2800)}};
 try{new MutationObserver(sync).observe(grid,{attributes:true,subtree:true,attributeFilter:["class"]})}catch(e){}
 var co=localStorage.getItem.bind(localStorage);
 var _si=localStorage.setItem.bind(localStorage);Storage.prototype.setItem=function(k,v){_si.call(this,k,v);if(k==="c1coins")setTimeout(sync,0)};
@@ -1112,6 +1125,7 @@ try{var a=JSON.parse(localStorage.getItem(K)||"[]");a.forEach(function(k){k=+k;i
 var n=Object.keys(seen).length;if(n){document.getElementById("cnt").textContent="الأقسام المكتشفة: "+n+" من 8"+(n==8?" 🎉":"");document.getElementById("pb").style.width=n*12.5+"%";if(n==8&&!done)pend=1;if(typeof reqUI==="function")reqUI()}}catch(e){}
 new MutationObserver(save).observe(g,{subtree:true,attributes:true,attributeFilter:["class"]})})();</script>
 <style id="perf">
+#c1s .pk{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 4px 4px;padding:8px 10px;background:#fff;border:1.5px dashed #087B5955;border-radius:16px}#c1s .pk button{border:2px solid #d9e4d0;background:#fff;color:#25246F;border-radius:99px;padding:5px 12px;font:700 13.5px Cairo,sans-serif;cursor:pointer}#c1s .pk button.on{background:#087B59;border-color:#087B59;color:#fff}
 /* أداء: إزالة الفلاتر المكلفة على الجوال */
 .h svg,.h.seen svg,.h:hover svg{filter:none!important}
 .h::before{content:"";position:absolute;left:34%;right:34%;bottom:1%;height:7%;border-radius:50%;background:#25246f4d;filter:blur(9px);z-index:-1;pointer-events:none}
