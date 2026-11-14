@@ -1061,7 +1061,7 @@ sv.insertAdjacentHTML("beforeend",'<g class="hf"><g class="sl"><path class="e" d
 /* lines */
 var ln=document.createElementNS(NS,"svg");ln.id="c1ln";grid.appendChild(ln);
 function seenAt(i){return grid.children[i+1]&&grid.children[i+1].classList.contains("seen")}
-var RM=false;try{RM=matchMedia("(prefers-reduced-motion:reduce)").matches}catch(e){}
+var RM=true;/* السيارات متوقفة */
 function lines(){var hs=[].slice.call(grid.querySelectorAll(".h")),P=hs.map(function(h){return[h.offsetLeft+h.offsetWidth/2,h.offsetTop+h.offsetHeight*.4,h.offsetHeight]});
 ln.setAttribute("viewBox","0 0 "+grid.offsetWidth+" "+grid.offsetHeight);var s="";
 for(var i=0;i<P.length-1;i++){var a=P[i],b=P[i+1],my=(a[1]+b[1])/2,d=Math.abs(a[1]-b[1])<50?"M"+a[0]+" "+a[1]+"C"+(a[0]+b[0])/2+" "+a[1]+" "+(a[0]+b[0])/2+" "+b[1]+" "+b[0]+" "+b[1]:"M"+a[0]+" "+a[1]+"C"+a[0]+" "+my+" "+b[0]+" "+my+" "+b[0]+" "+b[1];
