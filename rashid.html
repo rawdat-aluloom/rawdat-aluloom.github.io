@@ -10,6 +10,7 @@ header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;
 header img{width:44px;height:44px;border-radius:50%;background:#fff;object-fit:cover;object-position:top;border:2px solid #A9C84D}
 header b{font-size:18px;display:block;line-height:1.2}header small{opacity:.85;font-size:12.5px}
 header a{margin-inline-start:auto;color:#fff;text-decoration:none;background:#ffffff26;border-radius:99px;padding:7px 16px;font-weight:800;font-size:14px}
+#nt{margin:10px 12px 0;padding:8px 12px;background:#FFF8DC;border:1.5px solid #F2B84B66;color:#7a5a00;border-radius:14px;font-size:13.5px;font-weight:700;line-height:1.7}
 #ms{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:10px}
 .rw{display:flex;gap:8px;align-items:flex-end}.rw img{width:30px;height:30px;border-radius:50%;background:#fff;object-fit:cover;object-position:top;border:1.5px solid #087B5944;flex:none}
 .m{max-width:82%;padding:9px 14px;border-radius:18px;font-size:16px;line-height:1.75;font-weight:600;word-wrap:break-word}
@@ -26,6 +27,7 @@ form button{border:0;border-radius:99px;padding:0 20px;background:linear-gradien
 form button:disabled{opacity:.5}
 </style></head><body>
 <header><img id="av" alt=""><div><b>رشيد</b><small>اسألني عن المجلة</small></div><a href="./" id="bk">رجوع</a></header>
+<div id="nt">رشيد مخصص للإجابة عن أسئلة محددة عن المجلة، ولا يستطيع الرد على كل كلام. وقريبًا سيتطور ليفهم أكثر 🌱</div>
 <div id="ms"></div>
 <footer><div id="cp"></div><form id="f" autocomplete="off"><input id="q" maxlength="200" placeholder="اكتب سؤالك عن المجلة..." enterkeyhint="send"><button type="submit" id="sb">إرسال</button></form></footer>
 <script>
@@ -73,7 +75,7 @@ var KB=[
 [["صممك","سواك","صنعك"],"صنعتني الموجهتان الطلابيتان أمل البدر ونوف المحارفي لأكون دليلك في المجلة 🌷"]];
 function nz(t){return String(t).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[؟?!.,،:؛"'«»()]/g," ").replace(/\s+/g," ").trim()}
 function lev(a,b){if(Math.abs(a.length-b.length)>1)return 9;var d=[],i,j;for(i=0;i<=a.length;i++){d[i]=[i]}for(j=0;j<=b.length;j++)d[0][j]=j;for(i=1;i<=a.length;i++)for(j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]==b[j-1]?0:1));return d[a.length][b.length]}
-function local(t){var n=" "+nz(t)+" ",ws=nz(t).split(" "),best=null,bs=0;KB.forEach(function(e){var sc=0;e[0].forEach(function(k){var kk=nz(k);if(!kk)return;if(n.indexOf(kk)>-1)sc+=kk.length>3?2:1;else if(kk.indexOf(" ")<0&&kk.length>=5&&ws.some(function(w){return w.length>=4&&lev(w,kk)<=1}))sc+=1});if(sc>bs){bs=sc;best=e}});return best?best[1]:"ما فهمت سؤالك تمامًا 🤔 جرّب أن تسألني عن أقسام المجلة، أو الشهادة، أو اللعبة، أو العملات، أو المتجر."}
+function local(t){var n=" "+nz(t)+" ",ws=nz(t).split(" "),best=null,bs=0;KB.forEach(function(e){var sc=0;e[0].forEach(function(k){var kk=nz(k);if(!kk)return;if(n.indexOf(kk)>-1)sc+=kk.length>3?2:1;else if(kk.indexOf(" ")<0&&kk.length>=5&&ws.some(function(w){return w.length>=4&&lev(w,kk)<=1}))sc+=1});if(sc>bs){bs=sc;best=e}});return best?best[1]:"ما فهمت سؤالك تمامًا 🤔 أنا مخصص لأسئلة محددة وقريبًا سأتطور. جرّب أن تسألني عن أقسام المجلة، أو الشهادة، أو اللعبة، أو العملات، أو المتجر."}
 
 function add(t,c){var d=document.createElement("div");d.className="m "+c;d.textContent=t;if(c.indexOf("r")==0){var w=document.createElement("div");w.className="rw";var im=document.createElement("img");im.src=AV;im.alt="";w.appendChild(im);w.appendChild(d);ms.appendChild(w)}else ms.appendChild(d);d.scrollIntoView({block:"end"});return d}
 function send(t){if(busy||!t)return;busy=true;sb.disabled=true;add(t,"u");q.value="";var w=add("رشيد يكتب...","r t");
@@ -82,6 +84,6 @@ if(!API){setTimeout(function(){done(local(t))},450+Math.random()*300);return}
 fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:t,history:hist,gender:G})}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(j){var r=(j&&j.reply)||"ما فهمت سؤالك، ممكن تعيده؟";hist.push({role:"user",content:t},{role:"assistant",content:r});hist=hist.slice(-8);done(r)}).catch(function(){done(local(t))})}
 ["ما موضوع هذا العدد؟","كيف أحصل على الشهادة؟","ما هي العملات؟","كيف ألعب اللعبة؟","ما هو المتجر؟","من أعدّ المجلة؟"].forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=function(){send(t)};cp.appendChild(b)});
 document.getElementById("f").onsubmit=function(e){e.preventDefault();var v=q.value.trim();if(v)send(v)};
-document.getElementById("bk").onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};
-add("أهلًا! أنا رشيد 👋 اسألني أي شيء عن المجلة، أو اضغط أحد الأسئلة بالأسفل.","r");
+document.getElementById("bk").onclick=function(e){e.preventDefault();if(window.parent!==window){parent.postMessage({rashidClose:1},"*")}else if(history.length>1&&document.referrer)history.back();else location.href="./"};
+add("أهلًا! أنا رشيد 👋 أنا مخصص للإجابة عن أسئلة محددة عن المجلة، وقريبًا سأتطور وأفهم أكثر. اضغط أحد الأسئلة بالأسفل أو اكتب سؤالك.","r");
 </script></body></html>
