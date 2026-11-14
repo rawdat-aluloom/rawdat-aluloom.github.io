@@ -1111,4 +1111,16 @@ function save(){try{localStorage.setItem(K,JSON.stringify(Object.keys(seen)))}ca
 try{var a=JSON.parse(localStorage.getItem(K)||"[]");a.forEach(function(k){k=+k;if(k>=0&&k<8&&!seen[k]){seen[k]=1;g.children[k].classList.add("seen")}});
 var n=Object.keys(seen).length;if(n){document.getElementById("cnt").textContent="الأقسام المكتشفة: "+n+" من 8"+(n==8?" 🎉":"");document.getElementById("pb").style.width=n*12.5+"%";if(n==8&&!done)pend=1;if(typeof reqUI==="function")reqUI()}}catch(e){}
 new MutationObserver(save).observe(g,{subtree:true,attributes:true,attributeFilter:["class"]})})();</script>
+<style id="perf">
+/* أداء: إزالة الفلاتر المكلفة على الجوال */
+.h svg,.h.seen svg,.h:hover svg{filter:none!important}
+.h::before{content:"";position:absolute;left:34%;right:34%;bottom:1%;height:7%;border-radius:50%;background:#25246f4d;filter:blur(9px);z-index:-1;pointer-events:none}
+.h.seen::before{background:#087b5966}
+#sb,.names div,.ov,#fest,#c1s,#c1w{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.ov,#c1s,#c1w{background:#25246fd0!important}
+#sb{background:#fffffff5!important}
+.bgb{will-change:transform}
+.h:not(.seen) svg,.h svg{will-change:auto}
+@media (max-width:700px){.bgb{display:none}}
+</style>
 </body></html>
