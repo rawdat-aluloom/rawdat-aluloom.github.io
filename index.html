@@ -1165,17 +1165,48 @@ body.rch #rsw,body.rch #rsm{display:none!important}
 <script id="rchj">(function(){
 var API="";/* رابط وسيط رشيد (Cloudflare Worker) */
 var rch=document.getElementById("rch"),ms=document.getElementById("rchm"),q=document.getElementById("rchq"),f=document.getElementById("rchf"),sb=document.getElementById("rchs"),hist=[],busy=false,started=false;
+var KB=[
+[["موضوع","قيمه العدد","التعاون","تعاون","عن ماذا","عن ايش","محتوى العدد"],"موضوع هذا العدد هو «التعاون»، وشعارنا: يد واحدة لا تصفق، وبالتعاون نصنع الإنجاز 🤝"],
+[["رساله العدد","رساله الى نفسي","رساله لنفسي","الثقه"],"رسالة العدد بعنوان «رسالة إلى نفسي»، وتقول إن الخطأ درس نتعلم منه، وإن الإنجازات الكبيرة تبدأ بخطوات صغيرة 💚"],
+[["البرنامج","ادارة الوقت","تنظيم الوقت","الاولويات","المذاكره"],"البرنامج الإرشادي عن إدارة الوقت: حدد مهامك اليومية، ابدأ بالأهم، قسّم المهام الكبيرة، ابتعد عن المشتتات، ولا تنسَ الراحة والنوم ⏰"],
+[["قصه","عبره","الكلمه التي"],"قصة وعبرة اسمها «الكلمة التي صنعت فرقًا»، وهي قصة مصورة تقلّب صفحاتها بأصبعك 📖"],
+[["مسابقه","سؤال المسابقه","اختبار"],"في مسابقة العدد سؤال عن المهارة التي تساعدك على إنجاز مهامك دون تأجيل. جرّبها بنفسك وستفوز! 🏆"],
+[["ركن الاسره","الاسره","اسرتي","الاهل","الوالدين"],"ركن الأسرة بعنوان «أسرتي سر نجاحي»، وفيه أفكار للحوار والجلوس معًا والشكر والتقدير بين أفراد الأسرة 🏡"],
+[["وطني","الوطن","السعوديه","المملكه"],"قسم «وطني في قلبي» عن حب السعودية بالأفعال: نحافظ على ممتلكات الوطن، ونحترم أنظمته، ونجتهد في دراستنا 🇸🇦"],
+[["انجازاتنا","الانجازات","انجاز"],"قسم «إنجازاتنا» نحتفي فيه بكل خطوة نجاح وكل مشاركة وموهبة، فلكل إنجاز حكاية ⭐"],
+[["كم قسم","الاقسام","كم قلب","القلوب","ثمانيه"],"في المجلة ثمانية قلوب، وكل قلب يفتح قسمًا. اضغط على القلب لتكتشفه، وتضيء القلوب التي فتحتها 💚"],
+[["مغلقه","لماذا الشهاده","ليش الشهاده","ما اقدر"],"الشهادة تُفتح بعد أن تكتشف القلوب الثمانية وتلعب اللعبة وتجمع ٥ نقاط على الأقل 🔓"],
+[["شهاده ثانيه","اخي","اختي","ابني","ابنتي","شهادتين"],"بعد أن تحصل على شهادتك، يمكنك إضافة شهادة ثانية لأخيك أو أختك من زر «شهادة لابنك/ابنتك الآخر» ➕"],
+[["احفظ الشهاده","حفظ الشهاده","صوره","تحميل","انزل الشهاده"],"اضغط «حفظ الشهادة كصورة» وستُحفظ شهادتك في جهازك لتفتخر بها 📥"],
+[["شهاده","كيف احصل","اخذ الشهاده"],"للحصول على الشهادة: افتح القلوب الثمانية، ثم العب لعبة الكلمات الطيبة واجمع ٥ نقاط على الأقل، ثم اكتب اسمك 🎓"],
+[["لعبه","العب","اصطياد","كلمات طيبه","نقاط","اللعب"],"في لعبة اصطياد الكلمات الطيبة المس الكلمات الخضراء لتكسب نقطة، وابتعد عن الكلمات الحمراء المؤذية لأنها تخسّرك قلبًا 🎮"],
+[["اطار","ذهبي"],"الإطار الذهبي يكلّف ٤٠ عملة، ويزيّن شهادتك بإطار ذهبي لامع 🏅"],
+[["لقب"],"اللقب يكلّف ٣٠ عملة، وتختار لقبًا مثل «صديق التعاون» أو «بطل اللطف» ليُكتب على شهادتك 🎖️"],
+[["ملصق","ملصقات","ستيكر"],"الملصقات تكلّف ٢٥ عملة، وتختار نجمة أو تاجًا أو درعًا أو قلبًا ليزيّن أعلى شهادتك 🌟"],
+[["وقت اضافي"],"الوقت الإضافي يكلّف ٢٠ عملة، ويعطيك خمس ثوانٍ زيادة في بداية كل جولة من اللعبة ⏱️"],
+[["عمله","عملات","كوينز","اجمع","متجر","اشتري","شراء"],"تكسب ٥ عملات عند فتح كل قلب لأول مرة، وعملات أخرى من نقاط اللعبة. ثم تشتري من «متجر العملات»: إطار ذهبي، لقب، ملصقات، أو وقت إضافي 🪙"],
+[["صوت","كتم","موسيقى"],"اضغط على زر الصوت 🔊 في أسفل الصفحة لتشغيل الأصوات أو كتمها"],
+[["حفظ التقدم","يحفظ","اغلق الصفحه","ارجع","تقدمي","تقدم"],"تقدمك يُحفظ في جهازك، فإذا أغلقت المجلة ورجعت تجد قلوبك وعملاتك كما تركتها ✅"],
+[["مديره","المديره","عبير"],"مديرة المدرسة هي الأستاذة عبير المحارفي 🌷"],
+[["موجهه","الموجهه","امل","نوف","من صنع","من عمل","المشرف"],"المجلة من إعداد الموجهتين الطلابيتين: أمل البدر ونوف المحارفي، تحت إشراف مديرة المدرسة عبير المحارفي 🌷"],
+[["العدد الثاني","القادم","الصدق"],"العدد الثاني عن «الصدق»، وهو قيد الإنشاء الآن، وسيكون جاهزًا قريبًا بإذن الله ✨"],
+[["شعار","تعريف المجله","ما هي المجله","ما المجله","ايش المجله","عن المجله"],"مجلة الإرشاد الطلابي مساحة تربوية نلتقي فيها لنشر الوعي، ونكتسب القيم، ونحتفي بالنجاح والإنجاز 💡"],
+[["من انت","من أنت","ما اسمك","مين انت","رشيد"],"أنا رشيد، دليلك في المجلة 😊 اسألني عن الأقسام أو الشهادة أو اللعبة أو العملات."],
+[["شكرا","شكراً","يعطيك","جزاك"],"العفو! أنا سعيد بمساعدتك 🌟"],
+[["مرحبا","السلام","اهلا","هلا","صباح","مساء"],"أهلًا وسهلًا! كيف أساعدك في المجلة؟ 👋"]];
+function nz(t){return String(t).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[؟?!.,،:؛"'«»()]/g," ").replace(/\s+/g," ").trim()}
+function local(t){var n=" "+nz(t)+" ",best=null,bs=0;KB.forEach(function(e){var sc=0;e[0].forEach(function(k){var kk=nz(k);if(kk&&n.indexOf(kk)>-1)sc+=kk.length>3?2:1});if(sc>bs){bs=sc;best=e}});return best?best[1]:"أنا أجيب عن مجلتنا فقط 🌱 جرّب أن تسألني عن أقسامها أو الشهادة أو اللعبة أو العملات."}
 function add(t,c){var d=document.createElement("div");d.className="m "+c;d.textContent=t;ms.appendChild(d);ms.scrollTop=ms.scrollHeight;return d}
 function chips(){var d=document.createElement("div");d.className="cp";["ما موضوع هذا العدد؟","كيف أحصل على الشهادة؟","ما هي العملات؟","كيف ألعب اللعبة؟"].forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=function(){d.remove();send(t)};d.appendChild(b)});ms.appendChild(d)}
 function open(){var im=document.querySelector("#rsm img");if(im)document.getElementById("rchi").src=im.src;document.body.classList.add("rch");rch.classList.add("on");if(!started){started=true;add("أهلًا! أنا رشيد 👋 اسألني أي شيء عن المجلة.","r");chips()}setTimeout(function(){try{q.focus()}catch(e){}},250)}
 function close(){rch.classList.remove("on");document.body.classList.remove("rch")}
 function send(t){if(busy||!t)return;busy=true;sb.disabled=true;add(t,"u");q.value="";var w=add("رشيد يكتب...","r t");
 function done(r){w.textContent=r;w.classList.remove("t");busy=false;sb.disabled=false;ms.scrollTop=ms.scrollHeight}
-if(!API){done("رشيد يتجهّز الآن، وسيجيب عن أسئلتك قريبًا 🌱");return}
+if(!API){setTimeout(function(){done(local(t))},550+Math.random()*350);return}
 fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:t,history:hist,gender:(typeof G!=="undefined"&&G=="f")?"f":"m"})}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(j){var r=(j&&j.reply)||"ما فهمت سؤالك، ممكن تعيده؟";hist.push({role:"user",content:t},{role:"assistant",content:r});hist=hist.slice(-8);done(r)}).catch(function(){done("رشيد مشغول الآن، حاول مرة ثانية بعد قليل 🙏")})}
 f.onsubmit=function(e){e.preventDefault();send(q.value.trim())};
 document.getElementById("rchx").onclick=close;rch.onclick=function(e){if(e.target===rch)close()};
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&rch.classList.contains("on"))close()});
-document.addEventListener("click",function(e){if(!API)return;var t=e.target&&e.target.closest&&e.target.closest("#rsm");if(!t)return;e.stopPropagation();e.preventDefault();open()},true)
+document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#rsm");if(!t)return;e.stopPropagation();e.preventDefault();open()},true)
 })();</script>
 </body></html>
