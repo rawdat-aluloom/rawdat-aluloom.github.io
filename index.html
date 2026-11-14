@@ -288,7 +288,7 @@ if(!G){var cv=document.querySelector("#intro .cv"),ob=document.getElementById("o
 var mb=document.createElement("button");mb.id="mnb";mb.type="button";mb.setAttribute("aria-label","فتح القائمة");mb.setAttribute("aria-expanded","false");mb.innerHTML="<i></i><i></i><i></i>";
 var bd=document.createElement("div");bd.id="mnbd";
 var dr=document.createElement("nav");dr.id="mnd";dr.setAttribute("aria-label","القائمة");
-dr.innerHTML='<div class="mh"><b>القائمة</b><button type="button" id="mnx" aria-label="إغلاق القائمة">✕</button></div><button type="button" class="mi" id="mng"><span class="ic"></span><span><b>تغيير الصيغة</b><small id="mngs"></small></span></button><button type="button" class="mi" id="mn2"><span class="ic">⭐</span><span><b>العدد الثاني: الصدق</b><small>قيد الإنشاء</small></span></button>';
+dr.innerHTML='<div class="mh"><b>القائمة</b><button type="button" id="mnx" aria-label="إغلاق القائمة">✕</button></div><button type="button" class="mi" id="mng"><span class="ic"></span><span><b>تغيير الصيغة</b><small id="mngs"></small></span></button><button type="button" class="mi" id="mn2"><span class="ic">⭐</span><span><b>العدد الثاني</b><small>قيد الإنشاء... ترقّبوه</small></span></button>';
 document.body.appendChild(bd);document.body.appendChild(dr);document.body.appendChild(mb);if(!G){mb.style.display="none"}
 document.getElementById("mngs").textContent=G=="f"?"الحالية: طالبة":G=="m"?"الحالية: طالب":"اختر: طالب أو طالبة";
 document.querySelector("#mng .ic").textContent=G=="f"?"👧":"👦";
@@ -901,7 +901,7 @@ setTimeout(function(){var c2=document.getElementById("cnt");if(c2&&/8\s*من\s*8
 document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#pr,#pr2,#pra");if(!t)return;var n=document.getElementById("cn");if(n&&n.textContent.trim()){sev("start",1);sev("finish",1);sev("save",0)}},true);
 })();</script>
 <style id="rsd">
-#rsw{position:fixed;right:8px;bottom:8px;z-index:10000;display:flex;align-items:flex-end;gap:6px;direction:ltr;pointer-events:none;--s:1;max-width:calc(100vw - 16px)}
+#rsw{position:fixed;right:8px;bottom:8px;z-index:100040;display:flex;align-items:flex-end;gap:6px;direction:ltr;pointer-events:none;--s:1;max-width:calc(100vw - 16px)}
 #rsw .rb{direction:rtl;position:relative;margin-bottom:calc(92px*var(--s));max-width:190px;background:#fff;color:#25246F;font:600 13.5px/1.7 Cairo,sans-serif;padding:8px 13px;border-radius:16px 16px 16px 4px;border:1.5px solid #A9C84D;box-shadow:0 6px 18px #25246f26;text-align:right;opacity:0;transform:translateY(8px) scale(.96);transform-origin:right bottom;transition:opacity .35s ease,transform .35s ease}
 #rsw.on .rb{opacity:1;transform:none}
 #rsw .rb:empty{display:none}
@@ -964,7 +964,7 @@ B.onclick=hide;
 document.addEventListener("keydown",function(e){if(e.key=="Escape"&&vis)hide()});
 function setS(){}
 // context: greeting after cover
-var hi=false;function greet(){if(hi)return;hi=true;if(lsg("rs_hi"))return;lss("rs_hi");setTimeout(function(){show("wave","أهلًا بك! أنا رشيد، دليلك في المجلة. اضغط على أي قلب لتبدأ.",6500)},1400)}
+var hi=false;function greet(){if(hi)return;hi=true;setTimeout(function(){show("wave","أهلًا بك! أنا رشيد، دليلك في المجلة. اضغط على أي قلب لتبدأ.",6500)},1400)}
 var intro=$("intro");
 if(intro){var ob=new MutationObserver(function(){if(!document.getElementById("intro")){ob.disconnect();greet()}});ob.observe(document.body,{childList:true})}else greet();
 // finish
@@ -1009,7 +1009,7 @@ var $=function(i){return document.getElementById(i)},AR=function(n){return Strin
 function g(k){try{return localStorage.getItem(k)}catch(e){return null}}function s(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function coins(){return +g("c1coins")||0}function setC(n){s("c1coins",String(Math.max(0,n)));ui()}
 function ui(){$("c1n").textContent=AR(coins())}
-function toast(t,ok){var e=$("c1t");e.textContent=t;e.style.color=ok?"#087B59":"#c0392b";e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2600)}
+function toast(t,ok){if(window.Rashid){window.Rashid.show(ok?"cheer":"think",t,4200);return}var e=$("c1t");e.textContent=t;e.style.color=ok?"#087B59":"#c0392b";e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2600)}
 function own(k){return g("c1p_"+k)==="1"}
 window.c1h=own("heart");
 var AW=[];try{AW=JSON.parse(g("c1aw")||"[]")}catch(e){}
@@ -1089,7 +1089,7 @@ st.innerHTML='<button type="button" class="tile" id="t1"><div class="rw"><svg vi
 cnt.parentNode.insertBefore(st,cnt);
 var hn=document.createElement("div");hn.id="c1hn";hn.textContent="اضغط على أي بطاقة لتفتحها: القلوب، المتجر، الشهادة";st.parentNode.insertBefore(hn,st);
 var qb=document.createElement("div");qb.id="c1q";cnt.parentNode.insertBefore(qb,cnt);
-var Q1=["بروح الفريق نصل إلى النجاح","لنفخر بأنفسنا، فنحن قادرون على الوصول ما دمنا نسعى ونحاول","تنظيم الوقت يعني أن نمنح كل مهمة وقتها المناسب","التفكير الجيد قبل اختيار الإجابة مهم، فالمعرفة تبدأ بالسؤال","كل خطوة إلى الأمام تستحق أن نفخر بها","دام عزك يا وطن، ودامت رايتك خفاقة"],Q2=["الصدق يظهر في أفعالنا حتى عندما لا يرانا أحد","كن صادقاً.. تكن موثوقاً","الاعتراف بالخطأ شجاعة","بالصدق نرتقي، وبالأمانة نبني الثقة","وفِّ بوعدك تكسب الثقة","الصدق طريق النجاة"],QQ=document.title.indexOf("الثاني")>-1?Q2:Q1,qi=0;
+var Q1=["بروح الفريق نصل إلى النجاح","لنفخر بأنفسنا، فنحن قادرون على الوصول ما دمنا نسعى ونحاول","تنظيم الوقت يعني أن نمنح كل مهمة وقتها المناسب","التفكير الجيد قبل اختيار الإجابة مهم، فالمعرفة تبدأ بالسؤال","كل خطوة إلى الأمام تستحق أن نفخر بها","دام عزك يا وطن، ودامت رايتك خفاقة"],QQ=Q1,qi=0;
 qb.textContent="«"+QQ[0]+"»";setInterval(function(){qb.style.opacity=0;setTimeout(function(){qi=(qi+1)%QQ.length;qb.textContent="«"+QQ[qi]+"»";qb.style.opacity=1},500)},4500);
 var sub0=document.querySelector("header .sub");if(sub0&&!document.querySelector(".c1sl")){var sl=document.createElement("p");sl.className="c1sl";sl.style.fontSize="min(4.7vw,22px)";sl.innerHTML='<span class="c1u">«يد واحدة لا تصفق، وبالتعاون نصنع الإنجاز»</span>';sub0.parentNode.insertBefore(sl,sub0)}
 
@@ -1099,9 +1099,10 @@ function certOk(){var c=$("ct");return c&&getComputedStyle(c).display!=="none"}
 function sync(){var n=nSeen(),ok=certOk();$("c1r").style.strokeDashoffset=100-n/8*100;$("c1rn").textContent=AR(n)+"/٨";
 var cn=+(localStorage.getItem("c1coins")||0);$("c1tn").textContent=AR(cn);$("c1ts").textContent=ok?"جاهزة":"مغلقة";$("c1ti").textContent=ok?"🎓":"🔒";
 chip.innerHTML='<u></u><b id="c1n">'+AR(cn)+'</b>';lines()}
-$("t1").onclick=function(){var n=nSeen();var t=$("c1t");t.textContent=n>=8?"أضأت كل القلوب 🎉":"بقي "+AR(8-n)+" من القلوب النائمة لتضيئها";t.style.color="#087B59";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2400)};
+function say(p,m,ok){if(window.Rashid)window.Rashid.show(p,m,5200);else toast(m,ok)}
+$("t1").onclick=function(){var n=nSeen();say(n>=8?"cheer":"point",n>=8?"أضأت كل القلوب 🎉":"بقي "+AR(8-n)+" من القلوب النائمة لتضيئها. اضغط على أي قلب!",1)};
 $("t2").onclick=function(){chip.click()};
-$("t3").onclick=function(){if(certOk())$("ct").click();else{var t=$("c1t"),all8=nSeen()>=8;t.textContent=all8?"الشهادة مغلقة، بقيت اللعبة، اضغط «العب الآن» 🎮":"الشهادة مغلقة، افتح القلوب الثمانية أولاً (بقي "+AR(8-nSeen())+")";t.style.color="#c0392b";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2800)}};
+$("t3").onclick=function(){if(certOk())$("ct").click();else{var all8=nSeen()>=8;say(all8?"point":"think",all8?"الشهادة مغلقة، بقيت اللعبة! اضغط «العب الآن» 🎮":"الشهادة مغلقة حاليًا. افتح القلوب الثمانية أولًا، وبقي "+AR(8-nSeen())+".",0)}};
 try{new MutationObserver(sync).observe(grid,{attributes:true,subtree:true,attributeFilter:["class"]})}catch(e){}
 var co=localStorage.getItem.bind(localStorage);
 var _si=localStorage.setItem.bind(localStorage);Storage.prototype.setItem=function(k,v){_si.call(this,k,v);if(k==="c1coins")setTimeout(sync,0)};
@@ -1117,7 +1118,7 @@ sync();setTimeout(sync,800);
 #c1w .e{font-size:52px;line-height:1.2}#c1w h3{margin:6px 0 4px;color:#25246F;font-size:22px}#c1w p{margin:0 0 16px;color:#5b6b8c;font-weight:600;line-height:1.8}
 #c1w button{border:0;border-radius:99px;background:#087B59;color:#fff;font:800 16px Cairo,sans-serif;padding:10px 34px;cursor:pointer}
 </style>
-<div id="c1w" role="dialog" aria-modal="true"><div class="cd"><div class="e">🚧</div><h3>العدد الثاني قيد الإنشاء</h3><p>نعمل على تجهيزه، وسيكون بين أيديكم قريبًا بإذن الله.</p><button type="button" id="c1wx">حسنًا</button></div></div>
+<div id="c1w" role="dialog" aria-modal="true"><div class="cd"><div class="e">🚧</div><h3>العدد الثاني قيد الإنشاء</h3><p>نعمل عليه الآن، ولن نخبركم عن موضوعه 🤫 ترقّبوه قريبًا بإذن الله.</p><button type="button" id="c1wx">حسنًا</button></div></div>
 <script>(function(){var w=document.getElementById("c1w");function cl(){w.classList.remove("on")}document.getElementById("c1wx").onclick=cl;w.onclick=function(e){if(e.target===w)cl()};
 document.addEventListener("keydown",function(e){if(e.key==="Escape")cl()});
 document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#mn2");if(!t)return;e.preventDefault();var x=document.getElementById("mnx");if(x)x.click();w.classList.add("on")},true)})();</script>
@@ -1140,17 +1141,6 @@ new MutationObserver(save).observe(g,{subtree:true,attributes:true,attributeFilt
 .h .hf path.e,.h.lime .hf path.e{stroke:#25246F}
 @media (max-width:700px){.bgb{display:none}}
 </style>
-<style id="rchs">
-body.rch{overflow:hidden!important;position:fixed!important;width:100%!important}
-body.rch>*:not(#rchf):not(script):not(style){visibility:hidden!important}
-body.rch *{animation-play-state:paused!important}
-#rchf{position:fixed;left:0;top:0;width:100%;height:100%;border:0;z-index:100050;background:#F7FAF5;display:none}
-#rchf.on{display:block!important}
-</style>
-<script id="rchj">(function(){var fr=null,sy=0,MAINT=false,tt;
-function maint(){var t=document.getElementById("rmt");if(!t){t=document.createElement("div");t.id="rmt";t.textContent="رشيد تحت الصيانة حاليًا 🔧 وسيعود قريبًا بإذن الله";t.style.cssText="position:fixed;left:50%;bottom:110px;transform:translateX(-50%);z-index:100060;max-width:86vw;background:#fff;color:#25246F;border:2px solid #F2B84B;border-radius:16px;padding:10px 16px;font:700 14.5px/1.7 Cairo,sans-serif;text-align:center;box-shadow:0 8px 24px #0003;opacity:0;transition:opacity .25s;pointer-events:none;direction:rtl";document.body.appendChild(t)}t.style.opacity="1";clearTimeout(tt);tt=setTimeout(function(){t.style.opacity="0"},2800)}
-function open(){sy=window.scrollY||0;if(!fr){fr=document.createElement("iframe");fr.id="rchf";fr.title="اسأل رشيد";fr.src="rashid.html?embed=1";document.body.appendChild(fr)}document.body.style.top=(-sy)+"px";document.body.classList.add("rch");fr.classList.add("on")}
-function close(){if(!fr)return;fr.classList.remove("on");document.body.classList.remove("rch");document.body.style.top="";window.scrollTo(0,sy)}
-window.addEventListener("message",function(e){if(e.data&&e.data.rashidClose)close()});
-document.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#rsm");if(!t)return;e.stopPropagation();e.preventDefault();if(MAINT){maint();return}open()},true)})();</script>
+
+
 <script id="gmj">(function(){var c=document.querySelector(".gcd");if(!c)return;if(!("IntersectionObserver"in window)){c.classList.add("in","run");return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting)c.classList.add("in");c.classList.toggle("run",e[0].isIntersecting)},{threshold:.25});o.observe(c)})()</script></body></html>
