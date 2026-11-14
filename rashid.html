@@ -27,11 +27,11 @@ form button{border:0;border-radius:99px;padding:0 20px;background:linear-gradien
 form button:disabled{opacity:.5}
 </style></head><body>
 <header><img id="av" alt=""><div><b>رشيد</b><small>اسألني عن المجلة</small></div><a href="./" id="bk">رجوع</a></header>
-<div id="nt">رشيد مخصص للإجابة عن أسئلة محددة عن المجلة، ولا يستطيع الرد على كل كلام. وقريبًا سيتطور ليفهم أكثر 🌱</div>
+<div id="nt">رشيد يجيب عن أسئلة المجلة فقط: الأقسام والشهادة واللعبة والعملات 🌱</div>
 <div id="ms"></div>
 <footer><div id="cp"></div><form id="f" autocomplete="off"><input id="q" maxlength="200" placeholder="اكتب سؤالك عن المجلة..." enterkeyhint="send"><button type="submit" id="sb">إرسال</button></form></footer>
 <script>
-var API="";/* رابط وسيط رشيد (Cloudflare Worker) */
+var API="https://rashed.ouinv76.workers.dev";/* رابط وسيط رشيد (Cloudflare Worker) */
 var PK="";/* مفتاح Pollinations العام (pk_...) لتفعيل الذكاء الاصطناعي */
 var SYS=`أنت «رشيد»، مرشد لطيف في «مجلة الإرشاد الطلابي» (العدد الأول، عام ١٤٤٨هـ) لمدرسة «الابتدائية وروضة الطموح». تتحدث مع طلاب وطالبات المرحلة الابتدائية.
 
@@ -113,5 +113,5 @@ fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.s
 ["ما موضوع هذا العدد؟","كيف أحصل على الشهادة؟","ما هي العملات؟","كيف ألعب اللعبة؟","ما هو المتجر؟","من أعدّ المجلة؟"].forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=function(){send(t)};cp.appendChild(b)});
 document.getElementById("f").onsubmit=function(e){e.preventDefault();var v=q.value.trim();if(v)send(v)};
 document.getElementById("bk").onclick=function(e){e.preventDefault();if(window.parent!==window){parent.postMessage({rashidClose:1},"*")}else if(history.length>1&&document.referrer)history.back();else location.href="./"};
-add("أهلًا! أنا رشيد 👋 أنا مخصص للإجابة عن أسئلة محددة عن المجلة، وقريبًا سأتطور وأفهم أكثر. اضغط أحد الأسئلة بالأسفل أو اكتب سؤالك.","r");
+add("أهلًا! أنا رشيد 👋 اسألني عن أقسام المجلة أو الشهادة أو اللعبة أو العملات. اضغط أحد الأسئلة بالأسفل أو اكتب سؤالك.","r");
 </script></body></html>
