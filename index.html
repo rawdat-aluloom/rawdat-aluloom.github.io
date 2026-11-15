@@ -626,7 +626,7 @@ fp.then(drawCert).then(function(b){CB=b;if(!b){fail();return}var rd=new FileRead
 <script>
 (function(){var it=$("intro");if(!it)return;$("introimg").src=document.querySelector(".logo img").src;document.body.style.overflow="hidden";
 function go(){if(it.classList.contains("open"))return;it.classList.add("open");try{sessionStorage.setItem("op","1")}catch(e){}tone([392,523,659,784]);setTimeout(function(){it.remove();document.body.style.overflow=""},1250)}
-it.onclick=go;$("opn").onclick=function(e){e.stopPropagation();go()};document.addEventListener("keydown",function(e){if(it.parentNode&&(e.key=="Enter"||e.key==" "||e.key=="Escape")){e.preventDefault();go()}});
+$("opn").onclick=function(e){e.stopPropagation();go()};document.addEventListener("keydown",function(e){if(it.parentNode&&(e.key=="Enter"||e.key==" "||e.key=="Escape")){e.preventDefault();go()}});
 })();
 </script>
 <script data-goatcounter="https://rawdat-aluloom.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
