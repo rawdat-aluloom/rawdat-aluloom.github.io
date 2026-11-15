@@ -1662,10 +1662,11 @@ xr[4]=off;put("4 0 obj\n<</Type/XObject/Subtype/Image/Width "+cv.width+"/Height 
 var cs="q "+iw.toFixed(2)+" 0 0 "+ih.toFixed(2)+" "+ox.toFixed(2)+" "+oy.toFixed(2)+" cm /Im0 Do Q";obj(5,"<</Length "+cs.length+">>\nstream\n"+cs+"\nendstream");
 var xo=off;put("xref\n0 6\n0000000000 65535 f \n");for(var k=1;k<=5;k++)put(("0000000000"+xr[k]).slice(-10)+" 00000 n \n");
 put("trailer\n<</Size 6/Root 1 0 R>>\nstartxref\n"+xo+"\n%%EOF");
-var pdf=new Blob(parts,{type:"application/pdf"}),nm="شهادة-"+(document.getElementById("cn").textContent||"").replace(/[\\\/:*?"<>|]/g,"").trim()+".pdf",u=URL.createObjectURL(pdf),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(u)},4000);
+var f,pdf=new Blob(parts,{type:"application/pdf"}),nm="شهادة-"+(document.getElementById("cn").textContent||"").replace(/[\\\/:*?"<>|]/g,"").trim()+".pdf",f=null;try{f=new File([pdf],nm,{type:"application/pdf"})}catch(x){}
+if(f&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:nm});if(window.Rashid)window.Rashid.show("cheer","اختر «حفظ في الملفات» لحفظ الشهادة.",6000)}catch(x){if(x&&x.name!=="AbortError")throw x}return}
+var u=URL.createObjectURL(pdf),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(u)},4000);
 if(window.Rashid)window.Rashid.show("cheer","تم تجهيز الشهادة بصيغة PDF. يمكنك طباعتها على ورقة A4.",6000)}
-catch(e){if(window.Rashid)window.Rashid.show("think","تعذّر تجهيز ملف PDF، جرّب حفظها كصورة.",5000)}
-pb.disabled=false;pb.textContent=t}}
+catch(e){if(window.Rashid)window.Rashid.show("think","تعذّر تجهيز ملف PDF، جرّب حفظها كصورة.",5000)}finally{pb.disabled=false;pb.textContent=t}}}
 })();
 
 (function(){
