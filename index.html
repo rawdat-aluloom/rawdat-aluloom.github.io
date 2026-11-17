@@ -317,6 +317,20 @@ html body #mnb{width:46px!important;height:46px!important;min-width:46px!importa
 html body #c1c{margin-top:7px!important}
 /* متجر العملات: بدون زر × (زر «إغلاق» موجود أسفل القائمة) */
 html body #c1x{display:none!important}
+
+/* لمس البطاقات: لا يبقى لونها بعد الضغط */
+@media(hover:none){html body #c1st .tile:hover{background:transparent!important}}
+html body #c1st .tile{-webkit-tap-highlight-color:transparent}
+html body #c1st .tile:focus:not(:focus-visible){outline:0!important;background:transparent!important}
+html body #c1st .tile:active{background:#EAF3E5!important}
+/* العنوان يلتف بدل ما يطلع خارج الشاشة */
+html body header h1{white-space:normal!important;font-size:clamp(30px,8.4vw,50px)!important;text-wrap:balance}
+@media(min-width:900px){html body header h1{font-size:60px!important}}
+@media(max-width:400px){html body header .meta{font-size:13.5px!important;padding:5px 14px!important}}
+
+/* زر إغلاق الشهادة: صف مستقل أسفل الأزرار بلون مختلف */
+html body .cact #cx{order:99!important;flex:0 0 100%!important;max-width:172px!important;margin:26px auto 4px!important;padding:11px 24px!important;font-size:16px!important;background:linear-gradient(180deg,#B9D563,#A9C84D)!important;box-shadow:0 4px 0 #7B9A2B,0 9px 16px #0003!important;color:#25246F!important}
+html body .cact #cx:active{transform:translateY(3px);box-shadow:0 1px 0 #7B9A2B,0 3px 8px #0003!important}
 </style></head><body><style id="ld2s">#ld2{position:fixed;inset:0;z-index:100020;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(circle at 15% 10%,#A9C84D55,transparent 45%),radial-gradient(circle at 90% 90%,#268CB544,transparent 45%),#F7FAF5;font:800 19px Cairo,Tahoma,sans-serif;color:#25246F;transition:opacity .5s}#ld2.o{opacity:0;pointer-events:none}html.gk #ld2{display:none}#ld2 .st,#ldg .st{position:relative;width:96px;height:112px}#ld2 .st i,#ldg .st i{position:absolute;left:8px;width:80px;height:24px;border-radius:7px;box-shadow:inset 0 -4px 0 #0003,inset 0 4px 0 #fff4;opacity:0;animation:ld2d 2.4s infinite}#ld2 .st i:before,#ld2 .st i:after,#ldg .st i:before,#ldg .st i:after{content:"";position:absolute;top:-6px;width:16px;height:8px;border-radius:4px 4px 0 0;background:inherit}#ld2 .st i:before,#ldg .st i:before{left:14px}#ld2 .st i:after,#ldg .st i:after{right:14px}#ld2 .st i:nth-child(1),#ldg .st i:nth-child(1){bottom:0;background:#25246F;animation-delay:0s}#ld2 .st i:nth-child(2),#ldg .st i:nth-child(2){bottom:26px;background:#087B59;animation-delay:.35s}#ld2 .st i:nth-child(3),#ldg .st i:nth-child(3){bottom:52px;background:#A9C84D;animation-delay:.7s}#ld2 .st i:nth-child(4),#ldg .st i:nth-child(4){bottom:78px;background:#268CB5;animation-delay:1.05s}@keyframes ld2d{0%{opacity:0;transform:translateY(-70px)}12%{opacity:1;transform:translateY(0)}16%{transform:translateY(-4px)}20%{transform:translateY(0)}78%{opacity:1}92%,100%{opacity:0;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){#ld2 .st i{animation:none;opacity:1}}</style><div id="ld2" role="status" aria-live="polite"><div class="st"><i></i><i></i><i></i><i></i></div><div>جارٍ بناء المجلة...</div></div><script>(function(){var e=document.getElementById("ld2"),t0=Date.now(),d=0;function out(){if(d)return;d=1;setTimeout(function(){e.classList.add("o");setTimeout(function(){e.remove()},550)},Math.max(0,800-(Date.now()-t0)))}if(document.readyState=="complete")out();else window.addEventListener("load",out);setTimeout(out,6000)})()</script>
 <style id="gpc">#gp{position:fixed;inset:0;z-index:100001;display:none;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle at 15% 10%,#A9C84D55,transparent 45%),radial-gradient(circle at 90% 90%,#268CB544,transparent 45%),#F7FAF5;font-family:Cairo,Tahoma,sans-serif;direction:rtl;text-align:center;color:#25246F}
 #gp.on{display:flex}#gp .bx{max-width:420px;width:100%}
@@ -1047,7 +1061,7 @@ function hide(){clearTimeout(hideT);W.classList.remove("on");vis=false;M.classLi
 function ovOpen(){return["ov","cm","gm"].some(function(i){var e=document.getElementById(i);return e&&e.classList.contains("on")})}
 function show(p,text,ms,effect){if(!SP[p]||ovOpen())return;clearTimeout(hideT);var was=vis;pose(p);B.textContent="";String(text||"").split("🏡").forEach(function(t,i){if(i){var m=document.createElement("img");m.src=BI.house;m.className="rhi";B.appendChild(m)}B.appendChild(document.createTextNode(t))});W.classList.add("on");window.__rsT=Date.now();vis=true;M.classList.remove("on");
 if(effect)setTimeout(function(){fx(effect)},was?200:700);
-hideT=setTimeout(hide,Math.min(12000,Math.max(7000,3000+(text||"").length*90)))}
+hideT=setTimeout(hide,Math.min(9000,Math.max(3000,2200+(text||"").length*65)))}
 // avatar button
 var AV=document.createElement("img");AV.alt="";AV.src=SP.wave.src;var hd=SP.wave.hd,k=40/hd[2];AV.style.cssText="position:relative;width:"+(SP.wave.nw*k)+"px;max-width:none;margin:"+(3-hd[1]*k)+"px 0 0 "+(1-hd[0]*k)+"px";M.appendChild(AV);M.classList.add("on");
 var tips=[["point","اضغط على أي لبنة لتكتشف قسمًا جديدًا."],["think","اكتشف الأقسام الثمانية لتحصل على شهادتك."],["lie","أنا هنا إن احتجت شيئًا. جرّب لعبة الكلمات الطيبة!"],["book","كل لبنة تخبئ موضوعًا تربويًا يستحق القراءة."]],ti=0;
