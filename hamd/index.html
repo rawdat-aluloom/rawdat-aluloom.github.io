@@ -54,7 +54,7 @@ section{padding-block:var(--sec) 0}
 /* البطل: تعريف بالاسم أولًا */
 .hero{padding-top:130px;position:relative;isolation:isolate}
 .hero::before{content:"";position:absolute;inset:0 0 -80px;z-index:-1;background-image:linear-gradient(rgba(80,130,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(80,130,255,.09) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 40% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 70% at 40% 40%,#000 20%,transparent 75%)}
-.hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.hero .grid{display:block}
 .hero .intro{max-width:600px}
 .show{position:relative;height:460px;display:flex;justify-content:center;align-items:center}
 .show::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(closest-side,rgba(31,107,255,.45),transparent);filter:blur(10px)}
@@ -173,10 +173,7 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
       <p class="what">متخصص في المحتوى التعليمي والإعلامي التفاعلي لأي جهة تعليمية: منصات، مجلات، ألعاب، وفيديوهات توعوية.</p>
       <div class="cta"><a class="btn main" href="#work">استعرض الأعمال</a></div>
     </div>
-    <div class="show" aria-hidden="true">
-      <div class="ph s1"><img src="assets/m1.jpg" alt=""></div>
-      <div class="ph s2"><img src="assets/m2.jpg" alt=""></div>
-      <div class="ph s3"><img src="assets/m3.jpg" alt=""></div>
+
     </div>
   </div></section>
 
