@@ -466,11 +466,11 @@ function doIns(){if(dp){var d=dp;dp=null;d.prompt();return}
  m.classList.add("on")}
 document.getElementById("inso").onclick=function(){m.classList.remove("on")};m.onclick=function(e){if(e.target===m)m.classList.remove("on")};
 it.onclick=function(){mo(false);hideB();doIns()};
-var b=document.createElement("div");b.id="insb";b.setAttribute("role","status");b.innerHTML='<span class="ico">'+IC.phone+'</span><div class="tx"><b>ثبّت المجلة على جوالك</b><small>افتحها بضغطة واحدة مثل التطبيق</small></div><div class="ac"><button type="button" class="go">أضفها</button><button type="button" class="x">لاحقًا</button></div>';document.body.appendChild(b);
-function hideB(){b.classList.remove("on");try{localStorage.setItem("c1ins","1")}catch(x){}}
+var b=document.createElement("div");b.id="insb";b.setAttribute("role","status");b.innerHTML='<span class="ico">'+IC.phone+'</span><div class="tx"><b>ثبّت المجلة على جوالك</b><small>تفتحها بضغطة مثل التطبيق</small></div><button type="button" class="go">أضفها</button><button type="button" class="x" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><i class="bar"></i>';document.body.appendChild(b);
+var bt=0;function outB(){clearTimeout(bt);if(!b.classList.contains("on"))return;b.classList.add("out");setTimeout(function(){b.classList.remove("on","out")},450)}function hideB(){outB();try{localStorage.setItem("c1ins","1")}catch(x){}}function showB(){var n=0;try{n=+localStorage.getItem("c1insn")||0;localStorage.setItem("c1insn",String(n+1));if(n+1>=3)localStorage.setItem("c1ins","1")}catch(x){}b.classList.remove("out");b.classList.add("on");clearTimeout(bt);bt=setTimeout(outB,7000)}b.addEventListener("touchstart",function(){b.classList.add("hold");clearTimeout(bt)},{passive:true});b.addEventListener("touchend",function(){b.classList.remove("hold");clearTimeout(bt);bt=setTimeout(outB,3500)},{passive:true});
 b.querySelector(".go").onclick=function(){hideB();doIns()};b.querySelector(".x").onclick=hideB;
 var seen=false;try{seen=localStorage.getItem("c1ins")=="1"}catch(x){}
-if(!seen&&mobile&&G)setTimeout(function(){if(!document.getElementById("intro")&&!document.documentElement.classList.contains("gk")&&!dr.classList.contains("on"))b.classList.add("on");else setTimeout(function(){if(!document.getElementById("intro"))b.classList.add("on")},8000)},9000);
+if(!seen&&mobile&&G)setTimeout(function(){if(!document.getElementById("intro")&&!document.documentElement.classList.contains("gk")&&!dr.classList.contains("on"))showB();else setTimeout(function(){if(!document.getElementById("intro"))showB()},8000)},9000);
 })();
 
 document.addEventListener("keydown",function(e){if(e.key=="Escape"&&dr.classList.contains("on")){e.stopPropagation();mo(false)}},true);
@@ -1919,4 +1919,23 @@ h.innerHTML=words.map(function(w){return '<span aria-hidden="true" style="displa
 var done=false;function go(){if(done)return;if(document.getElementById("intro")||document.documentElement.classList.contains("gk")||getComputedStyle(h).visibility==="hidden"){setTimeout(go,150);return}
 done=true;[].forEach.call(h.children,function(e,i){var a=e.animate([{opacity:0,filter:"blur(10px)",transform:"translateY(-14px)"},{opacity:.6,filter:"blur(4px)",transform:"translateY(3px)",offset:.55},{opacity:1,filter:"blur(0)",transform:"translateY(0)"}],{duration:700,delay:200+i*120,easing:"cubic-bezier(.22,1,.36,1)",fill:"forwards"});a.onfinish=function(){e.style.cssText="display:inline-block"}})}
 setTimeout(go,300);setTimeout(function(){if(!done){done=true;[].forEach.call(h.children,function(e){e.style.cssText="display:inline-block"})}},9000)})();
-</script><script id="a11y">(function(){var n=document.getElementById("nm");if(n&&!n.getAttribute("aria-label"))n.setAttribute("aria-label","اسمك على الشهادة");document.querySelectorAll("#cin h3").forEach(function(h){h.setAttribute("role","heading");h.setAttribute("aria-level","2")})})();</script></body></html>
+</script><script id="a11y">(function(){var n=document.getElementById("nm");if(n&&!n.getAttribute("aria-label"))n.setAttribute("aria-label","اسمك على الشهادة");document.querySelectorAll("#cin h3").forEach(function(h){h.setAttribute("role","heading");h.setAttribute("aria-level","2")})})();</script><style id="insb3">
+#insb{top:calc(max(10px,env(safe-area-inset-top)) + 58px)!important;left:12px!important;right:12px!important;max-width:420px!important;gap:11px!important;padding:10px 10px 10px 12px!important;border-radius:20px!important;
+background:linear-gradient(135deg,#2d2c86,#1f1e5e)!important;-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(169,200,77,.45)!important;
+box-shadow:0 18px 40px rgba(20,20,70,.35),inset 0 1px 0 rgba(255,255,255,.12)!important;color:#fff;overflow:hidden}
+#insb.on{animation:insIn .55s cubic-bezier(.2,1.25,.35,1) both!important}
+#insb.out{animation:insOut .45s cubic-bezier(.6,0,.8,.4) both!important}
+@keyframes insIn{from{opacity:0;transform:translateY(-24px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes insOut{to{opacity:0;transform:translateY(-22px) scale(.96)}}
+#insb .ico{width:42px!important;height:42px!important;border-radius:13px!important;background:rgba(255,255,255,.1)!important;box-shadow:none!important}
+#insb .ico svg{width:26px!important;height:26px!important}
+#insb .tx b{font-size:15px!important;color:#fff!important}
+#insb .tx small{font-size:12.5px!important;color:#c9cdf0!important;font-weight:500!important;margin-top:0!important}
+#insb .go{flex:none;border-radius:12px!important;padding:9px 15px!important;font-size:14px!important;box-shadow:0 3px 0 #7B9A2B!important}
+#insb .x{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:50%!important;padding:0!important;color:#c9cdf0!important;background:rgba(255,255,255,.08)!important}
+#insb .x svg{width:14px;height:14px}
+#insb .bar{position:absolute;inset:auto 0 0 0;height:3px;background:#A9C84D;transform-origin:right;opacity:.9}
+#insb.on .bar{animation:insBar 7s linear forwards}#insb.hold .bar{animation-play-state:paused}
+@keyframes insBar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){#insb.on,#insb.out{animation:none!important}#insb.out{display:none!important}}
+</style></body></html>
