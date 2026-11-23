@@ -88,8 +88,8 @@ section{padding-block:var(--sec) 0}
 .work{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:40px;margin-bottom:var(--gap)}
 .work h3{font-size:calc(var(--t3) * 1.4);font-weight:800}
 .work p{margin-top:10px}
-.visit{display:inline-block;margin-top:20px;padding:11px 22px;border-radius:12px;background:var(--blue);text-decoration:none;font-weight:600;font-size:var(--ts)}
-.visit:hover{background:var(--cyan);color:var(--bg)}
+.visit{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;font-size:var(--tb)!important;border-radius:12px;background:var(--blue);text-decoration:none;font-weight:600;font-size:var(--ts)}
+.visit svg{width:18px;height:18px;transform:scaleX(-1)}.visit:hover{background:var(--cyan);color:var(--bg)}
 .tag{display:inline-block;font-size:var(--ts);color:var(--cyan);margin-bottom:8px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
 .facts div{background:var(--panel-2);border-radius:14px;padding:12px;text-align:center}
@@ -103,7 +103,7 @@ section{padding-block:var(--sec) 0}
 .ph.c{position:relative;z-index:2;width:200px}
 .vid{width:min(280px,100%);margin-inline:auto;border-radius:34px;background:#000;padding:9px;border:1px solid #2a3756;box-shadow:0 24px 60px rgba(0,0,0,.55)}
 .vid video{width:100%;aspect-ratio:9/16;object-fit:contain;border-radius:26px;background:#000}
-@media (max-width:760px){.work{grid-template-columns:1fr;padding:22px;gap:24px}.ph{width:118px}.ph.c{width:138px}.ph.l{margin-inline-end:-30px}.ph.r{margin-inline-start:-30px}.vid{width:250px}}
+@media (max-width:760px){.work{grid-template-columns:1fr;padding:22px;gap:24px}.ph{width:96px}.ph.c{width:120px}.ph.l{margin-inline-end:-24px}.ph.r{margin-inline-start:-24px}.work>*{min-width:0}.phones{padding:26px 6px}.vid{width:250px}}
 
 /* اللعبة */
 .gamebox{overflow:hidden;background:#050c20}
@@ -169,8 +169,8 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
   <section class="hero"><div class="wrap grid">
     <div class="intro">
       <h1>أنا أحمد، وهذا «<span class="bn">حَمْد</span>»</h1>
-      <p class="name">سمّيته من اسمي، وأصل الاسم من <b>الحَمْد</b>. أبي كل شغل أسلّمه يكون شي يُحمد عليه.</p>
-      <p class="what">متخصص في المحتوى التعليمي والإعلامي التفاعلي لأي جهة تعليمية: منصات، مجلات، ألعاب، وفيديوهات توعوية.</p>
+      <p class="name">اشتققته من اسمي، وأصله من <b>الحَمْد</b>؛ إذ أسعى إلى أن يكون كل عمل أقدّمه عملًا يُحمد عليه.</p>
+      <p class="what">متخصص في تصميم المحتوى التعليمي والإعلامي التفاعلي وتطويره للجهات التعليمية: منصات، ومجلات، وألعاب، ومقاطع توعوية.</p>
       <div class="cta"><a class="btn main" href="#work">استعرض الأعمال</a></div>
     </div>
 
@@ -178,50 +178,50 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
   </div></section>
 
   <section id="services"><div class="wrap">
-    <div class="head"><h2>وش أقدر أسوي لك</h2><p>لأي جهة تعليمية: وزارات وإدارات تعليم، وجامعات، ومدارس ورياض أطفال، ومراكز تدريب، وأقسام توعية.</p></div>
+    <div class="head"><h2>خدماتنا</h2><p>نخدم الجهات التعليمية بمختلف أنواعها: وزارات التعليم وإداراته، والجامعات، والمدارس ورياض الأطفال، ومراكز التدريب، وأقسام التوعية.</p></div>
     <div class="svcs">
-      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 6h4M9 11h6M9 15h4"/></svg></div><h3>منصات تعليمية</h3><p>اختبارات وتحديات ونقاط، ولوحة تتابع فيها المتعلمين.</p></article>
+      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 6h4M9 11h6M9 15h4"/></svg></div><h3>منصات تعليمية</h3><p>اختبارات وتحديات ونقاط، مع لوحة لمتابعة المتعلمين.</p></article>
       <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h6M8 11h6"/></svg></div><h3>مجلات تفاعلية</h3><p>إصدارات ومجلات إلكترونية بأقسام وألعاب وشهادات.</p></article>
-      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.7 6A3 3 0 0 0 5 18c1 0 1.9-.5 2.4-1.3L8.5 15h7l1.1 1.7A3 3 0 0 0 19 18a3 3 0 0 0 3-3.4l-.7-6A4 4 0 0 0 17.3 5Z"/></svg></div><h3>ألعاب تعليمية</h3><p>تراجع المحتوى وتغرس القيم، لأي عمر ومن الجوال مباشرة.</p></article>
-      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg></div><h3>فيديو توعوي</h3><p>شرح وتوعية بشخصيات متحركة وموسيقى ومؤثرات.</p></article>
-      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></div><h3>حملات توعوية</h3><p>موضوع واحد بمجلة وفيديو ولعبة، لأسبوع أو يوم عالمي.</p></article>
-      <a class="card svc more js-wa" href="#contact" target="_blank" rel="noopener"><h3>فكرة ثانية؟</h3><p>قل لي عنها ونسويها.</p></a>
+      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.7 6A3 3 0 0 0 5 18c1 0 1.9-.5 2.4-1.3L8.5 15h7l1.1 1.7A3 3 0 0 0 19 18a3 3 0 0 0 3-3.4l-.7-6A4 4 0 0 0 17.3 5Z"/></svg></div><h3>ألعاب تعليمية</h3><p>تعزّز المحتوى وتغرس القيم، لمختلف الأعمار، وتعمل مباشرة من الجوال.</p></article>
+      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg></div><h3>فيديو توعوي</h3><p>مقاطع شرح وتوعية بشخصيات متحركة وموسيقى ومؤثرات.</p></article>
+      <article class="card svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></div><h3>حملات توعوية</h3><p>موضوع واحد تقدّمه مجلة وفيديو ولعبة، لأسبوع توعوي أو يوم عالمي.</p></article>
+      <a class="card svc more js-wa" href="#contact" target="_blank" rel="noopener"><h3>لديك فكرة أخرى؟</h3><p>شاركنا إياها، ونعمل على تنفيذها.</p></a>
     </div>
   </div></section>
 
   <section id="work"><div class="wrap">
-    <div class="head"><h2>أعمالي</h2><p>كل عمل هنا صممناه وطوّرناه بالكامل بطلب من صاحبه، وشكله وألوانه مبنية على هوية العميل وذوقه.</p></div>
+    <div class="head"><h2>أعمالنا</h2><p>صُمّمت هذه الأعمال وطُوّرت بالكامل بطلب من أصحابها، وبُنيت على هوية كل جهة وتوجهاتها.</p></div>
     
     <article class="card work">
       <div>
         <span class="tag">مجلة تفاعلية، بطلب من ابتدائية وروضة الطموح</span>
         <h3>مجلة الإرشاد الطلابي، العدد الأول</h3>
-        <p>ثمانية أقسام تربوية بتصميم مكعبات البناء، ولعبة، ومتجر عملات، وشهادة تقدير تنفتح بعد ما يكمل الطالب الأقسام.</p>
+        <p>ثمانية أقسام تربوية بتصميم مستوحى من مكعبات البناء، مع لعبة ومتجر عملات، وشهادة تقدير تُتاح بعد إتمام الأقسام.</p>
         <div class="facts"><div><b>٨</b><span>أقسام</span></div><div><b>لعبة</b><span>داخل المجلة</span></div><div><b>شهادة</b><span>باسم الطالب</span></div></div>
-        <a class="visit" href="https://rawdat-aluloom.github.io/" target="_blank" rel="noopener">افتح المجلة</a>
       </div>
       <div class="phones">
         <div class="ph l"><img src="assets/m2.jpg" alt="قسم قصة وعبرة"></div>
         <div class="ph c"><img src="assets/m1.jpg" alt="الصفحة الرئيسية للمجلة"></div>
         <div class="ph r"><img src="assets/m3.jpg" alt="لعبة المجلة"></div>
       </div>
+      <a class="visit" href="https://rawdat-aluloom.github.io/" target="_blank" rel="noopener">تصفّح المجلة<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
     </article>
     <article class="card work">
       <div>
         <span class="tag">فيديو موشن، بطلب من ابتدائية وروضة الطموح</span>
         <h3>فيديو موشن تعليمي</h3>
-        <p>شخصيات مرسومة من الصفر، بموسيقى ومؤثرات. هذا مقطع منه.</p>
+        <p>شخصيات مرسومة من الصفر، مع موسيقى ومؤثرات صوتية.</p>
       </div>
       <div class="phones"><div class="vid"><video src="assets/work.mp4" poster="assets/p2.jpg" controls playsinline preload="metadata"></video></div></div>
     </article>
       <article class="card soon">
       <span class="dot"></span>
-      <div><h3>أعمال جديدة قيد الإنشاء</h3><p>نشتغل الحين على مشاريع تعليمية جديدة، وبتنضاف هنا أول ما تنطلق.</p></div>
+      <div><h3>أعمال جديدة قيد الإنشاء</h3><p>نعمل حاليًا على مشاريع تعليمية جديدة، وستُضاف هنا فور إطلاقها.</p></div>
     </article>
 </div></section>
 
   <section id="game"><div class="wrap">
-    <div class="head"><h2>جرّب لعبة سويتها</h2><p>حرّك إصبعك أو الماوس، والسفينة تطلق لحالها.</p></div>
+    <div class="head"><h2>جرّب إحدى ألعابنا</h2><p>حرّك إصبعك أو مؤشر الفأرة، وتُطلق المركبة النار تلقائيًا.</p></div>
     <div class="card gamebox">
       <div class="game" id="gamesec">
         <canvas id="arena" aria-label="لعبة حارس المدار"></canvas>
@@ -230,23 +230,23 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
       </div>
       <div class="legend"><span><i style="background:#ffd250"></i>طلقة ثلاثية</span><span><i style="background:#7fd3ff"></i>درع حماية</span><span><i style="background:#ff466e"></i>طلقات الأعداء</span></div>
     </div>
-    <div class="card note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><p>هذي لعبة للعرض بس. <b>أي لعبة نصممها نقدر نخليها بطابع تعليمي</b>، بأي فكرة وأي شكل: مسابقات، ألغاز، مغامرات، أو لعب جماعي مباشر، على أي موضوع وبهوية جهتك.</p></div>
+    <div class="card note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><p>هذه لعبة للعرض فقط. <b>ويمكن تصميم أي لعبة بطابع تعليمي</b>، بأي فكرة وأي أسلوب: مسابقات، وألغاز، ومغامرات، ولعب جماعي مباشر، في أي موضوع وبهوية جهتك.</p></div>
   </div></section>
 
   <section id="how"><div class="wrap">
-    <div class="head"><h2>كيف نشتغل</h2></div>
+    <div class="head"><h2>آلية العمل</h2></div>
     <div class="steps">
-      <div class="card st"><span class="n">١</span><h3>نتكلم</h3><p>تقول لي فكرتك.</p></div>
-      <div class="card st"><span class="n">٢</span><h3>نتفق</h3><p>المطلوب والمدة والسعر.</p></div>
-      <div class="card st"><span class="n">٣</span><h3>أبني</h3><p>وتشوف التقدم أول بأول.</p></div>
-      <div class="card st"><span class="n">٤</span><h3>نطلق</h3><p>وأظل معك بعدها.</p></div>
+      <div class="card st"><span class="n">١</span><h3>نتواصل</h3><p>تشاركنا فكرتك وأهدافها.</p></div>
+      <div class="card st"><span class="n">٢</span><h3>نتفق</h3><p>نحدد المتطلبات والمدة والتكلفة.</p></div>
+      <div class="card st"><span class="n">٣</span><h3>ننفّذ</h3><p>مع اطلاعك على سير العمل أولًا بأول.</p></div>
+      <div class="card st"><span class="n">٤</span><h3>نطلق</h3><p>ونستمر في الدعم بعد الإطلاق.</p></div>
     </div>
   </div></section>
 
   <section id="contact"><div class="wrap">
     <div class="card contact">
-      <h2>نبدأ؟</h2>
-      <p>عندك محتوى، أو فعالية، أو حملة توعوية؟ أرسلها لي ولو سطر واحد.</p>
+      <h2>لنبدأ</h2>
+      <p>هل لديك محتوى، أو فعالية، أو حملة توعوية؟ أرسل فكرتك ولو في سطر واحد.</p>
       <div class="ways">
         <a class="way wa js-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg><div>واتساب<small id="ph"></small></div></a>
         <a class="way mail" id="mail" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div>البريد<small id="em"></small></div><button class="copy" id="cp" type="button">نسخ</button></a>
@@ -259,7 +259,7 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
 
 <a class="backbar" id="backbar" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span id="backtxt"></span></a>
 <script>
-const ME={whatsapp:'966583317283',phoneShow:'0583317283',email:'ouinv76@gmail.com',waText:'السلام عليكم، شفت موقع حَمْد وحاب أكلمك عن مشروع'};
+const ME={whatsapp:'966583317283',phoneShow:'0583317283',email:'ouinv76@gmail.com',waText:'السلام عليكم، اطلعت على موقع حَمْد وأرغب في التواصل بخصوص مشروع'};
 const AR=v=>String(v).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
 const wa='https://wa.me/'+ME.whatsapp+'?text='+encodeURIComponent(ME.waText);
 document.querySelectorAll('.js-wa').forEach(a=>a.href=wa);
@@ -267,7 +267,7 @@ document.getElementById('ph').textContent=ME.phoneShow;document.getElementById('
 document.getElementById('yr').textContent=AR(new Date().getFullYear());
 (()=>{try{const q=new URLSearchParams(location.search);const u=q.get('back');if(!u)return;const url=new URL(u);if(!/^https?:$/.test(url.protocol))return;const b=document.getElementById('backbar');b.href=url.href;document.getElementById('backtxt').textContent='العودة إلى '+(q.get('label')||'الموقع').slice(0,40);b.hidden=false;document.body.classList.add('has-back')}catch(e){}})();
 
-document.getElementById('cp').addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const b=e.currentTarget;try{await navigator.clipboard.writeText(ME.email);b.textContent='تم'}catch(_){b.textContent='انسخه'}setTimeout(()=>b.textContent='نسخ',1600)});
+document.getElementById('cp').addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const b=e.currentTarget;try{await navigator.clipboard.writeText(ME.email);b.textContent='تم النسخ'}catch(_){b.textContent='تعذّر النسخ'}setTimeout(()=>b.textContent='نسخ',1600)});
 </script>
 <script>(function(){var s=document.querySelectorAll('.hamd-sig:not(.on)');if(!('IntersectionObserver' in window)){s.forEach(function(e){e.classList.add('on')});return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})},{threshold:.6});s.forEach(function(e){o.observe(e)})})();</script>
 <script>
@@ -295,7 +295,7 @@ document.getElementById('cp').addEventListener('click',async e=>{e.preventDefaul
     for(let i=0;i<n;i++){const col=i%cols,row=Math.floor(i/cols);S.en.push({hx:(col+.5)/cols,hy:.12+row*.08,x:W/2,y:-60-row*50,t:Math.random()*6,hp:1+Math.floor(S.wave/3),kind:(i+S.wave)%3,shoot:2+Math.random()*4,r:16})}hud()}
   function burst(x,y,col,n=18,sp=260){for(let i=0;i<n;i++){const a=Math.random()*6.28,v=sp*(.3+Math.random());S.fx.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:.5+Math.random()*.5,g:col})}}
   function end(){running=false;cancelAnimationFrame(raf);let best=0;try{best=+localStorage.getItem('hamd_best')||0;if(S.score>best){best=S.score;localStorage.setItem('hamd_best',best)}}catch(_){}
-    const ov=document.getElementById('ov');ov.innerHTML=`<div><div class="k">انتهت اللعبة عند الموجة ${AR(S.wave)}</div><div class="score">${AR(S.score)}</div><p style="margin-top:10px">أفضل نتيجة لك: ${AR(Math.max(best,S.score))}</p><button class="play" id="play2" type="button">مرة ثانية</button></div>`;
+    const ov=document.getElementById('ov');ov.innerHTML=`<div><div class="k">انتهت اللعبة عند الموجة ${AR(S.wave)}</div><div class="score">${AR(S.score)}</div><p style="margin-top:10px">أفضل نتيجة لك: ${AR(Math.max(best,S.score))}</p><button class="play" id="play2" type="button">العب مجددًا</button></div>`;
     ov.classList.remove('hide');document.getElementById('hud').hidden=true;document.getElementById('play2').onclick=start}
   function start(){sec.scrollIntoView({behavior:'smooth',block:'center'});try{AC=AC||new (window.AudioContext||window.webkitAudioContext)()}catch(_){}size();reset();document.getElementById('ov').classList.add('hide');document.getElementById('hud').hidden=false;running=true;last=performance.now();loop(last)}
   document.getElementById('play').onclick=start;
