@@ -265,7 +265,7 @@ const wa='https://wa.me/'+ME.whatsapp+'?text='+encodeURIComponent(ME.waText);
 document.querySelectorAll('.js-wa').forEach(a=>a.href=wa);
 document.getElementById('ph').textContent=ME.phoneShow;document.getElementById('em').textContent=ME.email;document.getElementById('mail').href='mailto:'+ME.email;
 document.getElementById('yr').textContent=AR(new Date().getFullYear());
-(()=>{try{const q=new URLSearchParams(location.search);const u=q.get('back');if(!u)return;const url=new URL(u);if(!/^https?:$/.test(url.protocol))return;const b=document.getElementById('backbar');b.href=url.href;document.getElementById('backtxt').textContent='العودة إلى '+(q.get('label')||'الموقع').slice(0,40);b.hidden=false;document.body.classList.add('has-back')}catch(e){}})();
+(()=>{try{const q=new URLSearchParams(location.search);const u=q.get('back');if(!u)return;const url=new URL(u);if(!/^https?:$/.test(url.protocol))return;const b=document.getElementById('backbar');b.href=url.href;document.getElementById('backtxt').textContent='العودة إلى '+(q.get('label')||'الموقع').slice(0,40);b.hidden=false;document.body.classList.add('has-back');b.addEventListener('click',e=>{e.preventDefault();if(history.length>1){history.back();return}try{window.close()}catch(_){}setTimeout(()=>{location.href=url.href},350)})}catch(e){}})();
 
 document.getElementById('cp').addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const b=e.currentTarget;try{await navigator.clipboard.writeText(ME.email);b.textContent='تم النسخ'}catch(_){b.textContent='تعذّر النسخ'}setTimeout(()=>b.textContent='نسخ',1600)});
 </script>
