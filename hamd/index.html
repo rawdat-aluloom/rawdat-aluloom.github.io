@@ -155,6 +155,7 @@ footer{display:flex;justify-content:space-between;color:var(--mute);font-size:va
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-reverse;gap:16px;text-align:center}}.credit{display:inline-flex;align-items:center;gap:12px;color:var(--white)}.credit .ct{display:flex;flex-direction:column;line-height:1.35}.credit small{font-size:11.5px;color:var(--mute)}.credit b{font-size:15px}.credit i{width:1px;align-self:stretch;background:var(--line)}.credit .hamd-sig{width:76px;display:block}
 .bn{font-family:'HamdPlex','IBM Plex Sans Arabic',sans-serif;font-weight:700}
+.backbar{position:fixed;inset:auto 12px calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 18px;border-radius:16px;background:rgba(13,26,56,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(77,163,255,.5);color:var(--white);text-decoration:none;font-weight:600;font-size:16px;box-shadow:0 12px 30px rgba(0,0,0,.45)}.backbar[hidden]{display:none}.backbar svg{width:20px;height:20px;flex:none}.backbar:hover{border-color:var(--cyan)}body.has-back{padding-bottom:84px}@media (min-width:761px){.backbar{inset:auto 50% 18px auto;transform:translateX(50%);min-width:420px}}
 </style>
 </head>
 <body>
@@ -266,6 +267,7 @@ footer{align-items:center}@media (max-width:760px){footer{flex-direction:column-
   </div></section>
 </main>
 
+<a class="backbar" id="backbar" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span id="backtxt"></span></a>
 <script>
 const ME={whatsapp:'966583317283',phoneShow:'0583317283',email:'ouinv76@gmail.com',waText:'السلام عليكم، شفت موقع حَمْد وحاب أكلمك عن مشروع'};
 const AR=v=>String(v).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
@@ -273,6 +275,8 @@ const wa='https://wa.me/'+ME.whatsapp+'?text='+encodeURIComponent(ME.waText);
 document.querySelectorAll('.js-wa').forEach(a=>a.href=wa);
 document.getElementById('ph').textContent=ME.phoneShow;document.getElementById('em').textContent=ME.email;document.getElementById('mail').href='mailto:'+ME.email;
 document.getElementById('yr').textContent=AR(new Date().getFullYear());
+(()=>{try{const q=new URLSearchParams(location.search);const u=q.get('back');if(!u)return;const url=new URL(u);if(!/^https?:$/.test(url.protocol))return;const b=document.getElementById('backbar');b.href=url.href;document.getElementById('backtxt').textContent='العودة إلى '+(q.get('label')||'الموقع').slice(0,40);b.hidden=false;document.body.classList.add('has-back')}catch(e){}})();
+
 document.getElementById('cp').addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const b=e.currentTarget;try{await navigator.clipboard.writeText(ME.email);b.textContent='تم'}catch(_){b.textContent='انسخه'}setTimeout(()=>b.textContent='نسخ',1600)});
 </script>
 <script>(function(){var s=document.querySelectorAll('.hamd-sig:not(.on)');if(!('IntersectionObserver' in window)){s.forEach(function(e){e.classList.add('on')});return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})},{threshold:.6});s.forEach(function(e){o.observe(e)})})();</script>
